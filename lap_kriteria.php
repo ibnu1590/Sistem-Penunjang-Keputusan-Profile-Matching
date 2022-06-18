@@ -17,10 +17,10 @@
         public function Header() {
             if ($this->page == 1) {
             // Logo
-            $image_file = K_PATH_IMAGES.'tcpdf_logo.jpg';
+            $image_file = K_PATH_IMAGES.'adira.jpg';
             $this->Image($image_file, 17, 4, 25, 25, 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-            $html = '<strong><font size="18">TK ISLAM BHAKTI MULYA UTAMA</font></strong><br/><br/>
-            Jl. Sukarela, RT.002/RW.005, Paninggilan, Kec. Ciledug, Kota Tangerang
+            $html = '<strong><font size="18">Adira Finance</font></strong><br/><br/>
+            Jl. HOS Cokroaminoto No. 57 Kreo, Ciledug Kota Tangerang
             <br/>
             ';
             $this->writeHTMLCell(

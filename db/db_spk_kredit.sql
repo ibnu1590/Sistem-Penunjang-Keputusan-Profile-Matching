@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.24-MariaDB)
-# Date: 2022-06-17 15:33:59
+# Date: 2022-06-18 19:29:06
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -42,28 +42,6 @@ CREATE TABLE `hasil_akhir` (
 #
 
 INSERT INTO `hasil_akhir` VALUES (7,'mr.x',4.30),(8,'mr.y',4.10),(9,'mr.z',4.20);
-
-#
-# Structure for table "hasil_spk"
-#
-
-DROP TABLE IF EXISTS `hasil_spk`;
-CREATE TABLE `hasil_spk` (
-  `id_spk` int(11) NOT NULL AUTO_INCREMENT,
-  `id_calon_kr` int(11) DEFAULT NULL,
-  `hasil_spk` float(10,2) DEFAULT NULL,
-  `minggu` varchar(2) NOT NULL,
-  `bulan` varchar(2) NOT NULL,
-  `tahun` varchar(4) NOT NULL,
-  PRIMARY KEY (`id_spk`),
-  KEY `id_calon_kr` (`id_calon_kr`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
-
-#
-# Data for table "hasil_spk"
-#
-
-INSERT INTO `hasil_spk` VALUES (45,5,98.00,'2','11','2019'),(46,6,92.00,'2','11','2019'),(47,7,89.00,'2','11','2019'),(48,8,98.00,'2','11','2019'),(49,9,100.00,'2','11','2019'),(52,7,9.25,'2','06','2022'),(53,8,10.75,'2','06','2022'),(54,9,8.50,'2','06','2022'),(56,8,10.75,'3','06','2022'),(57,9,8.50,'3','06','2022');
 
 #
 # Structure for table "hasil_tpa"

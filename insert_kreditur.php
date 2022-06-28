@@ -17,7 +17,7 @@
 			//move_uploaded_file($_FILES['foto']['tmp_name'], $target_file);
 			move_uploaded_file($_FILES["foto"]["tmp_name"],$target_dir. $_FILES["foto"]["name"]);
 			$db->insert('kreditur',"'','$nik','$nama','$jeniskelamin','$alamat','$telepon','$file_name','$ttl','$tempatlahir','$pendidikan',
-			'$jabatan','$pengalaman'")->count();
+			'$jabatan','$alasan'")->count();
 			header('location:tampil_kreditur.php');
 		//} else {
 		//	header('location:input_karyawan.php?error_msg=error_upload');

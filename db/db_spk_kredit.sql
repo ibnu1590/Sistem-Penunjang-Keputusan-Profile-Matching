@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.24-MariaDB)
-# Date: 2022-06-28 11:31:30
+# Date: 2022-06-28 11:44:52
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -78,7 +78,7 @@ CREATE TABLE `kreditur` (
   `TempatLahir` varchar(200) NOT NULL,
   `PendidikanTerakhir` varchar(100) NOT NULL,
   `Jabatan` varchar(100) NOT NULL,
-  `pengalaman` varchar(200) DEFAULT NULL,
+  `alasan` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_calon_kr`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
@@ -86,7 +86,7 @@ CREATE TABLE `kreditur` (
 # Data for table "kreditur"
 #
 
-INSERT INTO `kreditur` VALUES (14,'-','Suyono','Pria','Kampung Nrogtog pinang','089606853329','','1983-02-01','Jakarta','S1','SPV','Butuh uang untuk biaya persalinan'),(15,'-','Arief Wijaya','Pria','JL. Sejahtera No 15 Pinang Tangerang','089606877777','','1977-01-17','Jakarta','S1','Admin ','Butuh uang untuk pelunasan motor'),(16,'-','Joko Suprapto','Pria','JL Srengseng jakarta barat','089608989999','','1971-12-16','Jakarta','S1','Driver','Butuh uang untuk biaya sekolah anak'),(17,'-','Andre','Pria','JL peninggilan raya no 22','089789876656','','1992-02-13','Jakarta','S1','Staff','Butuh uang untuk bayar cicilan '),(18,'-','Stevi Fauzan','Pria','Pondok Jagung tangsel','089767675543','','1996-07-24','Jakarta','S1','Staff','Butuh uang untuk kebutuhan hidup');
+INSERT INTO `kreditur` VALUES (14,'-','Suyono','Pria','Kampung Nrogtog pinang','089606853329','','1983-02-01','Jakarta','S1','SPV Gudang','Butuh uang untuk biaya persalinan'),(15,'-','Arief Wijaya','Pria','JL. Sejahtera No 15 Pinang Tangerang','089606877777','','1977-01-17','Jakarta','S1','Admin ','Butuh uang untuk pelunasan motor'),(16,'-','Joko Suprapto','Pria','JL Srengseng jakarta barat','089608989999','','1971-12-16','Jakarta','S1','Driver','Butuh uang untuk biaya sekolah anak'),(17,'-','Andre','Pria','JL peninggilan raya no 22','089789876656','','1992-02-13','Jakarta','S1','Staff','Butuh uang untuk bayar cicilan '),(18,'-','Stevi Fauzan','Pria','Pondok Jagung tangsel','089767675543','','1996-07-24','Jakarta','S1','Staff','Butuh uang untuk kebutuhan hidup');
 
 #
 # Structure for table "kriteria"

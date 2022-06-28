@@ -76,7 +76,7 @@
                           </div>
                           <div class="form-group">
                               <label for="nama">Alasan Peminjaman</label>
-                              <textarea class="form-control" rows="8" name="pengalaman"></textarea>
+                              <textarea class="form-control" rows="8" name="alasan"></textarea>
                           </div>
                           <div class="form-group">
                               <button class="btn btn-primary">Simpan</button>

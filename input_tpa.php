@@ -14,7 +14,7 @@
             <br/>  
               <div class="panel panel-default">
                   <div class="panel-heading">
-                    Form Kriteria
+                    Form Penilaian
                   </div>
                   <div class="panel-body">
                       <form method="post" action="insert_tpa.php" enctype="multipart/form-data">
@@ -25,11 +25,11 @@
                           <?php endif ?>
                           <div class="form-group col-md-12">
                               <div class="alert alert-info">
-                                  <i class="fa fa-info-circle"></i> Nama Yang Ditampilkan adalah nama karyawan yang belum dinilai...
+                                  <i class="fa fa-info-circle"></i> Nama Yang Ditampilkan adalah nama Kreditur yang belum dinilai...
                               </div>
-                              <label for="nama">Nama Karyawan</label>
+                              <label for="nama">Nama Kreditur</label>
                                   <select required class="form-control" name="id_calon_kr">
-                                  <?php  foreach ($db->select('*','karyawan')->where('id_calon_kr not in (select id_calon_kr from hasil_tpa)')->get() as $val): ?> 
+                                  <?php  foreach ($db->select('*','kreditur')->where('id_calon_kr not in (select id_calon_kr from hasil_tpa)')->get() as $val): ?> 
                                   <option value="<?= $val['id_calon_kr']?>"><?= $val['nama'] ?></option>
                                   <?php endforeach ?>
                                   </select>

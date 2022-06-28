@@ -14,7 +14,7 @@
             <br/>  
               <div class="panel panel-default">
                   <div class="panel-heading">
-                    Form Kriteria
+                    Form Penilaian
                   </div>
                   <div class="panel-body">
                       <form method="post" action="update_tpa.php">
@@ -23,7 +23,7 @@
                                   <?= $_GET['error_msg']; ?>
                               </div>
                           <?php endif ?>
-                          <?php foreach ($db->select('hasil_tpa.*,karyawan.id_calon_kr,karyawan.nama','hasil_tpa,karyawan')->where('hasil_tpa.id_calon_kr=karyawan.id_calon_kr and hasil_tpa.id_calon_kr='.$_GET['id'])->get() as $data): ?>
+                          <?php foreach ($db->select('hasil_tpa.*,kreditur.id_calon_kr,kreditur.nama','hasil_tpa,kreditur')->where('hasil_tpa.id_calon_kr=kreditur.id_calon_kr and hasil_tpa.id_calon_kr='.$_GET['id'])->get() as $data): ?>
                           	  <input type="hidden" name="id" value="<?= $data['id_calon_kr']?>">
                                 <div class="form-group col-md-12">
                                   <label for="nama">Nama</label>

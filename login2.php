@@ -30,7 +30,7 @@
                 <div class="col-md-6">
                     <div class="alert alert-success">
                         <strong> Cari Karyawan</strong>
-                        <form method="get" action="cari_karyawan.php">
+                        <form method="get" action="cari_kreditur.php">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="nama" placeholder="Search">
                                 <div class="input-group-btn">

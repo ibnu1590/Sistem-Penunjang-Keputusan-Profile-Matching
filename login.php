@@ -56,11 +56,18 @@
   <body class="text-center">
     <form class="form-signin" method="post" action="proses_login.php" role="form">
     <?php
-    if(isset($_SESSION['err'])){
-      $err = $_SESSION['err'];
-      echo '<div class="alert alert-warning alert-message">'.$err.'</div>';
-            unset($_SESSION['err']);
-            echo "jancok";
+    if(!empty($_SESSION['err'])){
+      ?>
+        <script>
+            Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          footer: '<a href="">Why do I have this issue?</a>'
+        })
+        </script>
+      
+      <?php
     }
     ?>
             <img class="mb-4" src="assets/images/AF-Logo-Sponsor.png" alt="" width="260" height="72">
@@ -80,9 +87,7 @@
             <p class="mt-4 mb-3 text-muted">&copy; Abdurrahman Faris Nurul Falah</p> 
     </form>
   <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-    $(".alert-message").alert().delay(3000).slideUp('slow');
-  </script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

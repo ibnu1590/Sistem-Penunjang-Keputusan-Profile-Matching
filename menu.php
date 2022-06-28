@@ -18,23 +18,25 @@
                                 <a href="" data-toggle="dropdown" > Master</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="tampil_admin.php" id="AD">Data Admin</a></li>
-                                    <li><a href="tampil_karyawan.php" id="ck">Data Karyawan</a></li>
+                                    <li><a href="tampil_kreditur.php" id="ck">Data Kreditur</a></li>
                                     <li><a href="tampil_kriteria.php" id="ds">Data Kriteria</a></li>
                                     <li><a href="tampil_subkriteria.php" id="sk">Data Sub Kriteria</a></li>
                                 </ul>
                             </li>
-                            <?php
-                            if ($_SESSION['role'] == "admin") {
+                            <?php 
+                                if ($_SESSION['role'] == 'cmo') {
                             ?>
-                            <li><a href="tampil_tpa.php" id="tpa">Penilaian Karyawan</a></li>
+                            <li><a href="tampil_tpa.php" id="tpa">Penilaian Kreditur</a></li>
                             <li><a href="proses_spk.php" id="proses">Proses SPK</a></li> 
-                            <?php } ?>
+                            <?php
+                                }
+                            ?>
                             <li><a href="ubah_password.php" id="proses">Ubah Password</a></li>                                                               
                             <li>
                                 <a href="" data-toggle="dropdown" > Laporan</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="lap_admin.php" id="ck">Lap Admin</a></li>
-                                    <li><a href="lap_karyawan.php" id="ck">Lap Karyawan</a></li>
+                                    <li><a href="lap_kreditur.php" id="ck">Lap Kreditur</a></li>
                                     <li><a href="lap_kriteria.php" id="ds">Lap Kriteria</a></li>
                                     <li><a href="lap_subkriteria.php" id="sk">Lap Sub Kriteria</a></li>
                                     <li><a href="lap_nilai.php" id="sk">Lap Penilaian</a></li>

@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="page-head-line">Penilaian Karyawan</h4>
+                    <h4 class="page-head-line">Penilaian Kreditur</h4>
                 </div>
             </div>
             <div class="row">
@@ -39,7 +39,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no=1; foreach($db->select('karyawan.id_calon_kr,karyawan.nama,hasil_tpa.*','karyawan,hasil_tpa')->where('karyawan.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data): ?>
+                            <?php $no=1; foreach($db->select('kreditur.id_calon_kr,kreditur.nama,hasil_tpa.*','kreditur,hasil_tpa')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data): ?>
                             <tr>
                                 <td><?= $no;?></td>
                                 <td><?= $data['nama']?></td>

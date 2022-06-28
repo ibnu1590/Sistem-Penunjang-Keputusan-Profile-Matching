@@ -33,7 +33,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                foreach ($db->select('karyawan.nama,hasil_tpa.*','karyawan,hasil_tpa')->where('karyawan.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data):
+                                foreach ($db->select('kreditur.nama,hasil_tpa.*','kreditur,hasil_tpa')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data):
                             ?>
                                 <tr>
                                     <td><?= $data['nama']?></td>
@@ -75,7 +75,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    foreach ($db->select('karyawan.nama,hasil_tpa.*','karyawan,hasil_tpa')->where('karyawan.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data):
+                                    foreach ($db->select('kreditur.nama,hasil_tpa.*','kreditur,hasil_tpa')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data):
                                 ?>
                                     <tr>
                                         <td><?= $data['nama']?></td>
@@ -109,7 +109,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    foreach ($db->select('karyawan.nama,hasil_tpa.*','karyawan,hasil_tpa')->where('karyawan.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data):
+                                    foreach ($db->select('kreditur.nama,hasil_tpa.*','kreditur,hasil_tpa')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data):
                                 ?>
                                     <tr>
                                         <td><?= $data['nama']?></td>
@@ -158,7 +158,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    foreach ($db->select('karyawan.nama,hasil_tpa.*','karyawan,hasil_tpa')->where('karyawan.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data):
+                                    foreach ($db->select('kreditur.nama,hasil_tpa.*','kreditur,hasil_tpa')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data):
                                 ?>
                                     <tr>
                                         <td><?= $data['nama']?></td>
@@ -229,7 +229,7 @@
                             <tbody>
                                 <?php
                                     $q=0;
-                                    foreach ($db->select('karyawan.nama,hasil_tpa.*','karyawan,hasil_tpa')->where('karyawan.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data):
+                                    foreach ($db->select('kreditur.nama,hasil_tpa.*','kreditur,hasil_tpa')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data):
                                 ?>
                                     <tr>
                                         <td><?= $data['nama']?></td>

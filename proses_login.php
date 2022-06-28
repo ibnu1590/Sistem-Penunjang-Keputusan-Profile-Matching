@@ -1,5 +1,6 @@
 <?php
 	include 'db/db_config.php';
+	$_SESSION['err'] = true;
 	extract($_POST);
 	$pass = md5($password);
 	$sql = $db->select('*','admin')->where("username='$username' and password='$pass'");
@@ -16,10 +17,10 @@
 		$_SESSION['role'] = $role;
 		header('location:index.php');
 	} else {
-		$_SESSION['err'] = '<strong>ERROR!</strong> Username dan Password tidak ditemukan.';
+		$_SESSION['err'] = true;
 		// header('location:login.php');
 		// $err = "Email atau Password salah";
 		header('Location: ./');
-		die();
+		
 	}
 ?>

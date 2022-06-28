@@ -125,7 +125,7 @@
 		}
 
 		function totalkaryawan(){
-        	foreach ($this->select('count(*)','karyawan')->get() as $bb) {
+        	foreach ($this->select('count(*)','kreditur')->get() as $bb) {
         		return $bb[0];
             }	
 		}

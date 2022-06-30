@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.24-MariaDB)
-# Date: 2022-06-28 11:44:52
+# Date: 2022-06-30 17:17:59
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -18,7 +18,7 @@ CREATE TABLE `admin` (
   `password` varchar(200) DEFAULT NULL,
   `role` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "admin"
@@ -51,15 +51,20 @@ DROP TABLE IF EXISTS `hasil_tpa`;
 CREATE TABLE `hasil_tpa` (
   `id_test` int(11) NOT NULL AUTO_INCREMENT,
   `id_calon_kr` int(11) DEFAULT NULL,
+  `Usia` float(10,2) DEFAULT NULL,
+  `Gaji Perbulan` float(10,2) DEFAULT NULL,
+  `Status Tempat Tinggal` float(10,2) DEFAULT NULL,
+  `Pekerjaan` float(10,2) DEFAULT NULL,
+  `Umur Motor` float(10,2) DEFAULT NULL,
   PRIMARY KEY (`id_test`),
   KEY `id_calon_kr` (`id_calon_kr`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "hasil_tpa"
 #
 
-INSERT INTO `hasil_tpa` VALUES (70,14,90.00,92.00,101.00,104.00,110.00),(71,15,88.00,95.00,98.00,105.00,111.00),(72,16,87.00,93.00,99.00,103.00,109.00),(73,17,91.00,96.00,97.00,106.00,108.00),(74,18,88.00,94.00,98.00,102.00,111.00);
+INSERT INTO `hasil_tpa` VALUES (70,14,90.00,92.00,101.00,104.00,110.00),(71,15,88.00,95.00,98.00,105.00,111.00),(72,16,87.00,93.00,99.00,103.00,109.00),(73,17,91.00,96.00,97.00,106.00,108.00),(75,18,88.00,94.00,98.00,102.00,111.00);
 
 #
 # Structure for table "kreditur"
@@ -99,13 +104,13 @@ CREATE TABLE `kriteria` (
   `bobot` float(5,2) DEFAULT NULL,
   `type` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`id_kriteria`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "kriteria"
 #
 
-INSERT INTO `kriteria` VALUES (40,'Usia',25.00,'Core Factor'),(41,'Gaji_Perbulan',25.00,'Core Factor'),(42,'Status_Tempat_Tinggal',20.00,'Core Factor'),(43,'Pekerjaan',15.00,'Secondary Fa'),(44,'Umur_Motor',15.00,'Secondary Fa');
+INSERT INTO `kriteria` VALUES (40,'Usia',25.00,'Core Factor'),(41,'Gaji Perbulan',25.00,'Core Factor'),(42,'Status Tempat Tinggal',20.00,'Core Factor'),(43,'Pekerjaan',15.00,'Secondary Fa'),(44,'Umur Motor',15.00,'Secondary Fa');
 
 #
 # Structure for table "sub_kriteria"
@@ -118,7 +123,7 @@ CREATE TABLE `sub_kriteria` (
   `subkriteria` varchar(255) NOT NULL,
   `nilai` float(10,2) NOT NULL,
   PRIMARY KEY (`id_subkriteria`)
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "sub_kriteria"

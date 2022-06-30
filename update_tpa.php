@@ -15,6 +15,7 @@
 	if($db->update('hasil_tpa',$data)->where("id_calon_kr='$id'")->count()==1){
 		header('location:tampil_tpa.php');
 	} else {
-		echo "update gagal";
+		// echo "update gagal";
+		header('location:tampil_tpa.php');
 	}
 ?>

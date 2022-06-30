@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="row">
-                <h3>Tabel Hasil TPA</h3>
+                <h3>Tabel Hasil Penilaian</h3>
                 <div class="table-responsive">
                     <table id="example0" class="table table-striped table-bordered table-hover">
                         <thead>

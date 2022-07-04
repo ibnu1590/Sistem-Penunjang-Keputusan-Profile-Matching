@@ -9,7 +9,7 @@
 	}
 	$data = [];
 	for ($i=0; $i < count($kriteria) ; $i++) { 
-		array_push($data,$k[$i].'='.$kriteria[$i]);
+		array_push($data,$k[$i].'='."'".$kriteria[$i]."'");
 	}
 	$data = implode(',', $data);
 	if($db->update('hasil_tpa',$data)->where("id_calon_kr='$id'")->count()==1){
@@ -17,5 +17,6 @@
 	} else {
 		// echo "update gagal";
 		header('location:tampil_tpa.php');
+		// print_r($db->update('hasil_tpa',$data)->where("id_calon_kr='$id'"));
 	}
 ?>

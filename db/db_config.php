@@ -105,9 +105,9 @@
         }
 
 		//Hasil Ranking
-		function ranking($id,$namaz, $hasilz) {
-			if ($this->insert('hasil_akhir',"'$id','$namaz','$hasilz'")->count()){
-				echo $nama." ".$hasil;
+		function ranking($id,$namaz, $hasilz, $tglz, $mingguz, $bulanz, $tahunz, $keteranganz) {
+			if ($this->insert('hasil_akhir',"'','$id','$namaz','$hasilz','$tglz','$mingguz','$bulanz','$tahunz','$keteranganz'")->count()){
+				// echo $nama." ".$hasil;
 			}
 		}
 

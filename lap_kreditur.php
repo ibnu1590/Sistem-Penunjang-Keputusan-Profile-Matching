@@ -136,7 +136,7 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 
 $pdf->SetFont('times','',10);
 // add a page
-$pdf->AddPage('L');
+$pdf->AddPage();
 
 $htmlTable =
 '

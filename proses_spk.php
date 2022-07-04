@@ -43,7 +43,7 @@
                                 </tr>
                             <?php
                                 endforeach;
-                                $db->delete('hasil_akhir')->count() == 1;
+                                // $db->delete('hasil_akhir')->count() == 1;
                             ?>
                         </tbody>
                     </table>
@@ -275,9 +275,29 @@
 
                                             $nilaiSecondary = $tampung/$w;
                                             $tampung = 0;
-
+                                            $tgl = date("Y-m-d");
                                             $nilaiFinal = 0.6*$nilaiCore + 0.4*$nilaiSecondary;
-                                            $ranking = $db->ranking($data['id_calon_kr'],$data['nama'],$nilaiFinal);
+
+                                            if ($nilaiFinal < 3) {
+                                                $keterangan = "Ditolak";
+                                            } else {
+                                                $keterangan = "Diterima";
+                                            }
+                                            // $ranking = $db->ranking($data['id_calon_kr'],$data['nama'],$nilaiFinal,$tgl);
+                                            //open
+                                            $hasil = [];
+                                            $bulan = date('M'); 
+                                            $tahun = date('Y'); 
+                                            $tanggal = date('Y-m-d');
+
+                                            $minggu = $db->weekOfMonth($tanggal);
+                                            
+                                            if($db->select('id_calon_kr','hasil_akhir')->where("id_calon_kr='$data[id_calon_kr]' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->count() == 0){
+                                                $db->insert('hasil_akhir',"'$data[id_calon_kr]','$data[nama]','$nilaiFinal','$tgl','$minggu','$bulan','$tahun','$keterangan',''")->count();
+                                            } else {
+                                                $db->update('hasil_akhir',"nilai='$nilaiFinal',tanggal_lap='$tgl',minggu='$minggu',bulan='$bulan',tahun='$tahun',keterangan='$keterangan'")->where("id_calon_kr='$data[id_calon_kr]' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->count();
+                                            }
+                                            //close
                                         ?>
                                         <td><?= $nilaiFinal  ?></td>
                                     </tr>
@@ -302,7 +322,8 @@
                             <tbody>
                                 <?php
                                     $x=1;
-                                    foreach($db->select('DISTINCT *','hasil_akhir')->order_by('hasil_akhir.nilai','desc')->get() as $data):
+                                    // foreach($db->select('DISTINCT *','hasil_akhir')->order_by('hasil_akhir.nilai','desc')->get() as $data):
+                                    foreach($db->select('*','hasil_akhir')->where("minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->get() as $data):
                                         
                                 ?>
                                     <tr>

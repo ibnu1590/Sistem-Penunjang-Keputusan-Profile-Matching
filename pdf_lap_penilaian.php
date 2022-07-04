@@ -18,6 +18,10 @@
         return $bulan[$x];
     }
 
+    function getTanggal ($tgl_penilaian){
+        $tmpTgl = $tgl_penilaian;
+    }
+
     require_once('tcpdf/tcpdf.php');
 
     class MYPDF extends TCPDF {
@@ -148,6 +152,7 @@ $htmlTable =
 <table border="1" cellpadding="4" >
 <thead>
     <tr>
+    echo "testing aja" '.$minggu.' '.$bulan.' '.$tahun.';
         <td>Hasil </td>';
         $no = 1; 
         foreach ($db->select('kriteria','kriteria')->get() as $th):
@@ -173,7 +178,7 @@ $htmlTable =
     $no = 1;
   
     foreach ($db->select('distinct(kreditur.nama),hasil_tpa.*,hasil_spk.*','kreditur,hasil_tpa,hasil_spk')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr and kreditur.id_calon_kr=hasil_spk.id_calon_kr and hasil_spk.minggu='.$minggu.' and hasil_spk.bulan='.$bulan.' and hasil_spk.tahun='.$tahun.'')->order_by('hasil_spk.hasil_spk','desc')->get() as $data):
-     
+      print_r($db->select('distinct(kreditur.nama),hasil_tpa.*,hasil_spk.*','kreditur,hasil_tpa,hasil_spk')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr and kreditur.id_calon_kr=hasil_spk.id_calon_kr and hasil_spk.minggu='.$minggu.' and hasil_spk.bulan='.$bulan.' and hasil_spk.tahun='.$tahun.'')->order_by('hasil_spk.hasil_spk','desc')->get());
         
         $htmlTable .='<tr>';
         $htmlTable .='<td>';

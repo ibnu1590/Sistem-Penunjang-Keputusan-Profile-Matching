@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.24-MariaDB)
-# Date: 2022-07-04 20:07:43
+# Date: 2022-07-04 15:28:21
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -35,20 +35,14 @@ CREATE TABLE `hasil_akhir` (
   `id_calon_kr` int(11) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
   `nilai` float(11,2) DEFAULT NULL,
-  `tanggal_lap` date DEFAULT NULL,
-  `minggu` varchar(2) DEFAULT NULL,
-  `bulan` varchar(10) DEFAULT NULL,
-  `tahun` varchar(4) DEFAULT NULL,
-  `keterangan` varchar(12) DEFAULT NULL,
-  `id_akhir` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_akhir`)
-) ENGINE=InnoDB AUTO_INCREMENT=2213 DEFAULT CHARSET=utf8mb4;
+  `tanggal_lap` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 #
 # Data for table "hasil_akhir"
 #
 
-INSERT INTO `hasil_akhir` VALUES (14,'Suyono',3.00,'2022-07-04','2','Jul','2017','Diterima',2263),(15,'Arief Wijaya',4.10,'2022-07-04','2','Jul','2017','Diterima',2264),(16,'Joko Suprapto',4.20,'2022-07-04','2','Jul','2017','Diterima',2265),(17,'Andre',3.00,'2022-07-04','2','Jul','2017','Diterima',2266),(18,'Stevi Fauzan',4.10,'2022-07-04','2','Jul','2017','Diterima',2267),(14,'Suyono',3.00,'2022-07-04','2','Jul','2018','Diterima',2268),(15,'Arief Wijaya',4.10,'2022-07-04','2','Jul','2018','Diterima',2269),(16,'Joko Suprapto',4.20,'2022-07-04','2','Jul','2018','Diterima',2270),(17,'Andre',3.00,'2022-07-04','2','Jul','2018','Diterima',2271),(18,'Stevi Fauzan',4.10,'2022-07-04','2','Jul','2018','Diterima',2272),(14,'Suyono',3.00,'2022-07-04','2','Jul','2019','Diterima',2273),(15,'Arief Wijaya',4.10,'2022-07-04','2','Jul','2019','Diterima',2274),(16,'Joko Suprapto',4.20,'2022-07-04','2','Jul','2019','Diterima',2275),(17,'Andre',3.00,'2022-07-04','2','Jul','2019','Diterima',2276),(18,'Stevi Fauzan',4.10,'2022-07-04','2','Jul','2019','Diterima',2277),(14,'Suyono',3.00,'2022-07-04','2','Jul','2022','Diterima',2278),(15,'Arief Wijaya',4.10,'2022-07-04','2','Jul','2022','Diterima',2279),(16,'Joko Suprapto',4.20,'2022-07-04','2','Jul','2022','Diterima',2280),(17,'Andre',3.00,'2022-07-04','2','Jul','2022','Diterima',2281),(18,'Stevi Fauzan',3.00,'2022-07-04','2','Jul','2022','Diterima',2282);
+INSERT INTO `hasil_akhir` VALUES (14,'Suyono',4.00,'2022-07-04'),(15,'Arief Wijaya',4.10,'2022-07-04'),(16,'Joko Suprapto',4.20,'2022-07-04'),(17,'Andre',3.60,'2022-07-04'),(18,'Stevi Fauzan',4.10,'2022-07-04');
 
 #
 # Structure for table "hasil_tpa"
@@ -58,7 +52,7 @@ DROP TABLE IF EXISTS `hasil_tpa`;
 CREATE TABLE `hasil_tpa` (
   `id_test` int(11) NOT NULL AUTO_INCREMENT,
   `id_calon_kr` int(11) DEFAULT NULL,
-  `usia` int(11) DEFAULT NULL,
+  `usia` float(10,2) DEFAULT NULL,
   `gaji_perbulan` float(10,2) DEFAULT NULL,
   `status_tempat_tinggal` float(10,2) DEFAULT NULL,
   `pekerjaan` float(10,2) DEFAULT NULL,
@@ -71,7 +65,7 @@ CREATE TABLE `hasil_tpa` (
 # Data for table "hasil_tpa"
 #
 
-INSERT INTO `hasil_tpa` VALUES (83,14,119,124.00,129.00,138.00,143.00),(84,15,120,127.00,130.00,137.00,143.00),(85,16,119,125.00,131.00,135.00,141.00),(86,17,119,124.00,129.00,138.00,143.00),(87,18,119,124.00,129.00,138.00,143.00);
+INSERT INTO `hasil_tpa` VALUES (83,14,119,124.00,133.00,136.00,142.00),(84,15,120,127.00,130.00,137.00,143.00),(85,16,119,125.00,131.00,135.00,141.00),(86,17,123,128.00,129.00,138.00,140.00),(87,18,120,126.00,130.00,134.00,143.00);
 
 #
 # Structure for table "kreditur"

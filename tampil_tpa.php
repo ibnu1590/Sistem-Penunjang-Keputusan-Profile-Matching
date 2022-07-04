@@ -33,7 +33,12 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <?php foreach ($db->select('kriteria','kriteria')->get() as $kr ): ?>
-                                <th><?= $kr['kriteria']?></th>
+                                <th>
+                                    <?php
+                                        $tmp = explode('_',$kr['kriteria']);
+                                        echo ucwords(implode(' ',$tmp));
+                                    ?>
+                                </th>
                                 <?php endforeach ?>
                                 <th>Action</th>
                             </tr>

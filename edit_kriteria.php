@@ -27,7 +27,10 @@
                               <input type="hidden" name="id" value="<?= $data[0]?>">
                               <div class="form-group">
                                   <label for="nama">Nama Kriteria</label>
-                                  <input type="text" class="form-control" id="kriteria" name="kriteria" value="<?= $data['kriteria']?>">
+                                  <input type="text" class="form-control" id="kriteria" name="kriteria" value="<?php
+                                        $tmp = explode('_',$data['kriteria']);
+                                        echo ucwords(implode(' ',$tmp));
+                                    ?>">
                               </div>
                               <div class="form-group">
                                   <label>Bobot</label>

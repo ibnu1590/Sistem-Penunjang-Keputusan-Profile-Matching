@@ -1,12 +1,13 @@
 <?php
     include 'db/db_config.php';
+    extract($_POST);
     session_start();
     // error_reporting(0);
     if(empty($_SESSION['id'])){
         header('location:login.php');
     }
-    ob_start(); 
-  
+    // ob_start(); 
+
     require_once('tcpdf/tcpdf.php');
 
     class MYPDF extends TCPDF {
@@ -39,6 +40,7 @@
                 <table>
                 <tr>
                 <td align="center" style="font-size: 15px;">Laporan Data Penilaian</td>
+                
                 </tr>
                 </table>
                 <table>
@@ -140,17 +142,19 @@ $htmlTable =
             <th>No</th>
             <th>Nama</th>
             <th>Nilai Total</th>
-            <th>Ranking</th>
+            <th>Keterangan</th>
+            <th>Periode</th>
         </tr>
     </thead>
     <tbody>';
         $no=1; 
-        foreach($db->select('*','hasil_akhir')->order_by('hasil_akhir.nilai','desc')->get() as $data):
+        foreach($db->select('*','hasil_akhir')->where('minggu='."'"."$minggu"."'".' and bulan='."'"."$bulan"."'".' and tahun='."'"."$tahun"."'".'')->order_by('hasil_akhir.nilai','desc')->get() as $data):
     $htmlTable .='<tr>
             <td>'.$no.'</td>
             <td>'.$data['nama'].'</td>
             <td>'.$data['nilai'].'</td>
-            <td>'.$no.'</td>
+            <td>'.$data['keterangan'].'</td>
+            <td>'.$minggu.' '.$bulan.' '.$tahun.'</td>
         </tr>';
         $no++; endforeach;
         $htmlTable .= '</tbody>

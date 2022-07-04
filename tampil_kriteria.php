@@ -40,7 +40,12 @@
                             <?php $no=1; foreach($db->select('*','kriteria')->get() as $data): ?>
                             <tr>
                                 <td><?= $no;?></td>
-                                <td><?= trim($data['kriteria']) ?></td>
+                                <td>
+                                    <?php
+                                        $tmp = explode('_',$data['kriteria']);
+                                        echo ucwords(implode(' ',$tmp));
+                                    ?>
+                                </td>
                                 <td><?= $data['bobot']?></td>
                                 <td>
                                     <a class="btn btn-warning" href="edit_kriteria.php?id=<?php echo $data[0]?>">Edit</a>

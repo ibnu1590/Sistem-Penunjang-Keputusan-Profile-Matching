@@ -37,7 +37,12 @@
                           
                           <?php foreach ($db->select('id_kriteria,kriteria','kriteria')->get() as $r): ?>
                           <div class="form-group col-md-3">
-                              <label><?= $r['kriteria']?></label>
+                              <label>
+                                     <?php
+                                        $tmp = explode('_',$r['kriteria']);
+                                        echo ucwords(implode(' ',$tmp));
+                                    ?>
+                              </label>
                               <!-- <input type="number" name="place[]" class="form-control"> -->
                               <select required class="form-control" name="place[]">
                                 <?php  foreach ($db->select('*','sub_kriteria')->where('id_kriteria = '.$r['id_kriteria'].'')->get() as $val): ?> 

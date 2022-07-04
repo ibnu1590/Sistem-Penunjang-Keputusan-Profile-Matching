@@ -132,6 +132,7 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 
 // ---------------------------------------------------------
 
+
 $pdf->SetFont('times','',10);
 // add a page
 $pdf->AddPage();
@@ -149,9 +150,11 @@ $htmlTable =
     <tbody>';
         $no=1; 
         foreach($db->select('*','kriteria')->get() as $data):
+            $tmp = explode('_',$data['kriteria']);
+            $dataKriteria = ucwords(implode(' ',$tmp));
     $htmlTable .='<tr>
             <td>'.$data['id_kriteria'].'</td>
-            <td>'.$data['kriteria'].'</td>
+            <td>'.$dataKriteria.'</td>
             <td>'.$data['bobot'].'</td>
         </tr>';
         $no++; endforeach;

@@ -41,7 +41,11 @@
                             <?php $no=1; foreach($db->select('sub_kriteria.id_subkriteria,sub_kriteria.subkriteria,kriteria.kriteria,sub_kriteria.nilai','sub_kriteria,kriteria')->where('sub_kriteria.id_kriteria=kriteria.id_kriteria')->get() as $data): ?>
                             <tr>
                                 <td><?= $no;?></td>
-                                <td><?= $data['kriteria']?></td>
+                                <td><?php
+                                        $tmp = explode('_',$data['kriteria']);
+                                        echo ucwords(implode(' ',$tmp));
+                                    ?>
+                                </td>
                                 <td><?= $data['subkriteria']?></td>
                                 <td><?= $data['nilai']?></td>
                                 <td>

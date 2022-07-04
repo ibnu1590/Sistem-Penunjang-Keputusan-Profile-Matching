@@ -146,9 +146,11 @@ $htmlTable =
     <tbody>';
         $no=1; 
         foreach ($db->select('sub_kriteria.id_subkriteria,sub_kriteria.subkriteria,kriteria.kriteria,sub_kriteria.nilai','sub_kriteria,kriteria')->where('sub_kriteria.id_kriteria=kriteria.id_kriteria')->order_by('sub_kriteria.id_kriteria','asc')->get() as $data):
-    $htmlTable .='<tr>
+            $tmp = explode('_',$data['kriteria']);
+            $dataKriteria = ucwords(implode(' ',$tmp));
+            $htmlTable .='<tr>
             <td>'.$data['id_subkriteria'].'</td>
-            <td>'.$data['kriteria'].'</td>
+            <td>'.$dataKriteria.'</td>
             <td>'.$data['subkriteria'].'</td>
             <td>'.$data['nilai'].'</td>
         </tr>';

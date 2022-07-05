@@ -43,7 +43,7 @@
                                 </tr>
                             <?php
                                 endforeach;
-                                // $db->delete('hasil_akhir')->count() == 1;
+                                $db->delete('banding')->count() == 1;
                             ?>
                         </tbody>
                     </table>
@@ -79,7 +79,8 @@
                                 ?>
                                     <tr>
                                         <td><?= $data['nama']?></td>
-                                        <?php foreach ($db->select('kriteria','kriteria')->get() as $td): ?>
+                                        <?php foreach ($db->select('kriteria','kriteria')->get() as $td):
+                                             ?>
                                         <td><?=  $db->getnilaisubkriteria($data[$td['kriteria']]) - 3?></td>
                                         <?php endforeach ?>
                                     </tr>
@@ -113,7 +114,8 @@
                                 ?>
                                     <tr>
                                         <td><?= $data['nama']?></td>
-                                        <?php foreach ($db->select('kriteria','kriteria')->get() as $td): 
+                                        <?php foreach ($db->select('id_kriteria,kriteria','kriteria')->get() as $td): 
+                                            $nilai_gap = $db->getnilaisubkriteria($data[$td['kriteria']]) - 3;
                                             $nilaiGAP = $db->getnilaisubkriteria($data[$td['kriteria']]) - 3;
                                             if ($nilaiGAP == 0){
                                                 $nilaiGAP = 5;
@@ -134,6 +136,9 @@
                                             } elseif ($nilaiGAP == -4) {
                                                 $nilaiGAP = 1;
                                             }
+                                            $tgl = date("Y-m-d");
+
+                                            $simpanBanding = $db->banding($data['id_calon_kr'],$td['id_kriteria'],$nilai_gap,$nilaiGAP,$tgl);
                                         ?>
                                         <td><?=  $nilaiGAP ?></td>
                                         <?php endforeach ?>
@@ -292,7 +297,7 @@
 
                                             $minggu = $db->weekOfMonth($tanggal);
                                             
-                                            if($db->select('id_calon_kr','hasil_akhir')->where("id_calon_kr='$data[id_calon_kr]' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->count() == 0){
+                                            if($db->select('id_calon_kr','hasil_akhir')->where("id_calon_kr='$data[id_calon_kr]' and tanggal_lap='$tgl' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->count() == 0){
                                                 $db->insert('hasil_akhir',"'$data[id_calon_kr]','$data[nama]','$nilaiFinal','$tgl','$minggu','$bulan','$tahun','$keterangan',''")->count();
                                             } else {
                                                 $db->update('hasil_akhir',"nilai='$nilaiFinal',tanggal_lap='$tgl',minggu='$minggu',bulan='$bulan',tahun='$tahun',keterangan='$keterangan'")->where("id_calon_kr='$data[id_calon_kr]' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->count();

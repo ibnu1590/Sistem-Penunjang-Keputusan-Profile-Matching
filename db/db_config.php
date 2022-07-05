@@ -111,6 +111,13 @@
 			}
 		}
 
+		//nilaigap
+		function banding($id_kr,$id_subkriteria,$nilai_gap,$nilai_bobot,$tanggal_lap){
+			if ($this->insert('banding',"'$id_kr','$id_subkriteria','$nilai_gap','$nilai_bobot','$tanggal_lap'")->count()){
+				// echo "banding disimpan";
+			}
+		}
+
         //proses hasil 
         function bobot($kemampuan){
         	foreach ($this->select('bobot','kriteria')->where("kriteria='$kemampuan'")->get() as $bb) {

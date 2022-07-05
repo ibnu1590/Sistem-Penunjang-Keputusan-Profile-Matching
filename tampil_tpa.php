@@ -61,6 +61,7 @@
                     </table>    
                 </div>
             </div>
+            
         </div>
     </div>
     <!-- CONTENT-WRAPPER SECTION END-->
@@ -75,4 +76,4 @@
             $(function() {
                 $('#example1').dataTable();
             });
-        </script>
+</script>

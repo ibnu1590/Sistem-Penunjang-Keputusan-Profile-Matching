@@ -148,13 +148,13 @@ $htmlTable =
     </thead>
     <tbody>';
         $no=1; 
-        foreach($db->select('*','hasil_akhir')->where('minggu='."'"."$minggu"."'".' and bulan='."'"."$bulan"."'".' and tahun='."'"."$tahun"."'".'')->order_by('hasil_akhir.nilai','desc')->get() as $data):
+        foreach($db->select('*','hasil_akhir')->where('tanggal_lap='."'"."$tanggal_lap"."'".'')->order_by('hasil_akhir.nilai','desc')->get() as $data):
     $htmlTable .='<tr>
             <td>'.$no.'</td>
             <td>'.$data['nama'].'</td>
             <td>'.$data['nilai'].'</td>
             <td>'.$data['keterangan'].'</td>
-            <td>'.$minggu.' '.$bulan.' '.$tahun.'</td>
+            <td>'.$tanggal_lap.'</td>
         </tr>';
         $no++; endforeach;
         $htmlTable .= '</tbody>

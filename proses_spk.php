@@ -310,8 +310,7 @@
                                             if($db->select('id_calon_kr','hasil_akhir')->where("id_calon_kr='$data[id_calon_kr]' and tanggal_lap='$tgl' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->count() == 0){
                                                 $db->insert('hasil_akhir',"'$data[id_calon_kr]','$data[nama]','$nilaiFinal','$tgl','$minggu','$bulan','$tahun','$keterangan',''")->count();
                                             } else {
-                                                // echo "update suyono";
-                                                $db->update('hasil_akhir',"nilai='$nilaiFinal'")->where("id_calon_kr='$data[id_calon_kr]' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->count();
+                                                $db->update('hasil_akhir',"nilai='$nilaiFinal', keterangan='$keterangan'")->where("id_calon_kr='$data[id_calon_kr]' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->count();
                                             }
                                             //close
                                         ?>

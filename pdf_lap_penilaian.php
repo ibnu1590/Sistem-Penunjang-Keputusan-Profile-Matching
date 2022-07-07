@@ -178,7 +178,7 @@ $htmlTable =
     $no = 1;
   
     foreach ($db->select('distinct(kreditur.nama),hasil_tpa.*,hasil_spk.*','kreditur,hasil_tpa,hasil_spk')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr and kreditur.id_calon_kr=hasil_spk.id_calon_kr and hasil_spk.minggu='.$minggu.' and hasil_spk.bulan='.$bulan.' and hasil_spk.tahun='.$tahun.'')->order_by('hasil_spk.hasil_spk','desc')->get() as $data):
-      print_r($db->select('distinct(kreditur.nama),hasil_tpa.*,hasil_spk.*','kreditur,hasil_tpa,hasil_spk')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr and kreditur.id_calon_kr=hasil_spk.id_calon_kr and hasil_spk.minggu='.$minggu.' and hasil_spk.bulan='.$bulan.' and hasil_spk.tahun='.$tahun.'')->order_by('hasil_spk.hasil_spk','desc')->get());
+      
         
         $htmlTable .='<tr>';
         $htmlTable .='<td>';

@@ -40,7 +40,6 @@
                 <table>
                 <tr>
                 <td align="center" style="font-size: 15px;">Laporan Data Penilaian</td>
-                
                 </tr>
                 </table>
                 <table>
@@ -64,34 +63,33 @@
         }
         }
     
-        public function lastPage($resetmargins=false) {
+        public function lastPage($resetmargins=true) {
             $this->setPage($this->getNumPages(), $resetmargins);
             $this->isLastPage = true;
         }
         
         // Page footer
         public function Footer() {
+        //    if($this->$isLastPage) { 
+        //     $tgl = date("d F Y");
+        //     // $this->SetY(-55);
+        //     $html = '<font size="10">Jakarta, '.$tgl.' <br/><br/> <br/><br/>
+        //     '.$_SESSION['nama'].'<font>
+        //     <br/>';
+        //     $this->writeHTMLCell(
+        //         $w=0,
+        //         $h=0,
+        //         $x=0,
+        //         $y=-40,
+        //         $html,
+        //         $border=0,
+        //         $ln=0,
+        //         $fill=true,
+        //         $reseth=true,
+        //         $align='R'
+        //     ); 
 
-           if($this->isLastPage) { 
-            $tgl = date("d F Y");
-            // $this->SetY(-55);
-            $html = '<font size="10">Jakarta, '.$tgl.' <br/><br/> <br/><br/>
-            '.$_SESSION['nama'].'<font>
-            <br/>';
-            $this->writeHTMLCell(
-                $w=0,
-                $h=0,
-                $x=0,
-                $y=-40,
-                $html,
-                $border=0,
-                $ln=0,
-                $fill=false,
-                $reseth=true,
-                $align='R'
-            ); 
-
-            }
+        //     }
             // Position at 15 mm from bottom
             $this->SetY(-15);
 
@@ -137,22 +135,31 @@ $pdf->AddPage();
 $htmlTable =
 '
 <table border="1" cellpadding="4" >
+<br>
 <thead>
         <tr>
-            <th>No</th>
             <th>Nama</th>
-            <th>Nilai Total</th>
-            <th>Keterangan</th>
+            <th>Kriteria</th>
+            <th>Sub Kriteria</th>
+            <th>Nilai Target</th>
+            <th>Nilai Kreditur</th>
+            <th>Nilai GAP</th>
+            <th>Nilai Bobot</th>
+            <th>Tanggal Penilaian</th>
         </tr>
     </thead>
     <tbody>';
         $no=1; 
-        foreach($db->select('*','hasil_akhir')->where('tanggal_lap BETWEEN '."'"."$startdate"."'".' AND '."'"."$enddate"."'".'')->get() as $data):
+        foreach($db->select('*','banding')->where('tanggal_lap BETWEEN '."'"."$startdate"."'".' AND '."'"."$enddate"."'".'')->get() as $data):
     $htmlTable .='<tr>
-            <td>'.$no.'</td>
             <td>'.$data['nama'].'</td>
-            <td>'.$data['nilai'].'</td>
-            <td>'.$data['keterangan'].'</td>
+            <td>'.$data['kriteria'].'</td>
+            <td>'.$data['id_subkriteria'].'</td>
+            <td>3</td>
+            <td>'.$data['nilai_gap'].'</td>
+            <td>'.$data['nilai_gap'].'</td>
+            <td>'.$data['nilai_bobot'].'</td>
+            <td>'.$data['tanggal_lap'].'</td>
         </tr>';
         $no++; endforeach;
         $htmlTable .= '</tbody>

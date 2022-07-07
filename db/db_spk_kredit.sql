@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.24-MariaDB)
-# Date: 2022-07-05 16:04:40
+# Date: 2022-07-04 20:07:43
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -27,24 +27,6 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` VALUES (1,'superadmin','Jambi','741','admin@gmail.com','admin','21232f297a57a5a743894a0e4a801fc3','admin'),(10,'cmo','-','089606853329','-','cmo','99330263c899fa050dc18add519cae39','cmo'),(11,'finance','-','089606853322','-','finance','57336afd1f4b40dfd9f5731e35302fe5','finance');
 
 #
-# Structure for table "banding"
-#
-
-DROP TABLE IF EXISTS `banding`;
-CREATE TABLE `banding` (
-  `id_calon_kr` int(11) DEFAULT NULL,
-  `id_subkriteria` int(11) DEFAULT NULL,
-  `nilai_gap` float(11,2) DEFAULT NULL,
-  `nilai_bobot` float(11,2) DEFAULT NULL,
-  `tanggal_lap` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-#
-# Data for table "banding"
-#
-
-
-#
 # Structure for table "hasil_akhir"
 #
 
@@ -60,12 +42,13 @@ CREATE TABLE `hasil_akhir` (
   `keterangan` varchar(12) DEFAULT NULL,
   `id_akhir` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_akhir`)
-) ENGINE=InnoDB AUTO_INCREMENT=2298 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2213 DEFAULT CHARSET=utf8mb4;
 
 #
 # Data for table "hasil_akhir"
 #
 
+INSERT INTO `hasil_akhir` VALUES (14,'Suyono',3.00,'2022-07-04','2','Jul','2017','Diterima',2263),(15,'Arief Wijaya',4.10,'2022-07-04','2','Jul','2017','Diterima',2264),(16,'Joko Suprapto',4.20,'2022-07-04','2','Jul','2017','Diterima',2265),(17,'Andre',3.00,'2022-07-04','2','Jul','2017','Diterima',2266),(18,'Stevi Fauzan',4.10,'2022-07-04','2','Jul','2017','Diterima',2267),(14,'Suyono',3.00,'2022-07-04','2','Jul','2018','Diterima',2268),(15,'Arief Wijaya',4.10,'2022-07-04','2','Jul','2018','Diterima',2269),(16,'Joko Suprapto',4.20,'2022-07-04','2','Jul','2018','Diterima',2270),(17,'Andre',3.00,'2022-07-04','2','Jul','2018','Diterima',2271),(18,'Stevi Fauzan',4.10,'2022-07-04','2','Jul','2018','Diterima',2272),(14,'Suyono',3.00,'2022-07-04','2','Jul','2019','Diterima',2273),(15,'Arief Wijaya',4.10,'2022-07-04','2','Jul','2019','Diterima',2274),(16,'Joko Suprapto',4.20,'2022-07-04','2','Jul','2019','Diterima',2275),(17,'Andre',3.00,'2022-07-04','2','Jul','2019','Diterima',2276),(18,'Stevi Fauzan',4.10,'2022-07-04','2','Jul','2019','Diterima',2277),(14,'Suyono',3.00,'2022-07-04','2','Jul','2022','Diterima',2278),(15,'Arief Wijaya',4.10,'2022-07-04','2','Jul','2022','Diterima',2279),(16,'Joko Suprapto',4.20,'2022-07-04','2','Jul','2022','Diterima',2280),(17,'Andre',3.00,'2022-07-04','2','Jul','2022','Diterima',2281),(18,'Stevi Fauzan',3.00,'2022-07-04','2','Jul','2022','Diterima',2282);
 
 #
 # Structure for table "hasil_tpa"
@@ -82,12 +65,13 @@ CREATE TABLE `hasil_tpa` (
   `umur_motor` float(10,2) DEFAULT NULL,
   PRIMARY KEY (`id_test`),
   KEY `id_calon_kr` (`id_calon_kr`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "hasil_tpa"
 #
 
+INSERT INTO `hasil_tpa` VALUES (83,14,119,124.00,129.00,138.00,143.00),(84,15,120,127.00,130.00,137.00,143.00),(85,16,119,125.00,131.00,135.00,141.00),(86,17,119,124.00,129.00,138.00,143.00),(87,18,119,124.00,129.00,138.00,143.00);
 
 #
 # Structure for table "kreditur"

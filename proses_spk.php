@@ -43,7 +43,7 @@
                                 </tr>
                             <?php
                                 endforeach;
-                                $db->delete('banding')->count() == 1;
+                                // $db->delete('banding')->count() == 1;
                             ?>
                         </tbody>
                     </table>
@@ -117,6 +117,10 @@
                                         <?php foreach ($db->select('id_kriteria,kriteria','kriteria')->get() as $td): 
                                             $nilai_gap = $db->getnilaisubkriteria($data[$td['kriteria']]) - 3;
                                             $nilaiGAP = $db->getnilaisubkriteria($data[$td['kriteria']]) - 3;
+                                            $nilaiSubkriteria = $db->getnilaisubkriteria($data[$td['kriteria']]);
+                                            $tmp = explode('_',$td['kriteria']);
+                                            $namaKriteria = ucwords(implode(' ',$tmp));
+
                                             if ($nilaiGAP == 0){
                                                 $nilaiGAP = 5;
                                             } else if ($nilaiGAP == 1){
@@ -138,7 +142,12 @@
                                             }
                                             $tgl = date("Y-m-d");
 
-                                            $simpanBanding = $db->banding($data['id_calon_kr'],$td['id_kriteria'],$nilai_gap,$nilaiGAP,$tgl);
+                                            if($db->select('id_calon_kr','banding')->where("id_calon_kr='$data[id_calon_kr]' and tanggal_lap='$tgl' and kriteria='$namaKriteria'")->count() == 0){
+                                                $db->banding($data['id_calon_kr'],$nilaiSubkriteria,$nilai_gap,$nilaiGAP,$tgl,$namaKriteria,$data['nama']);
+                                            } else {
+                                                // echo "update";
+                                                $db->update('banding',"id_subkriteria='$nilaiSubkriteria', nilai_gap='$nilai_gap', nilai_bobot='$nilaiGAP', tanggal_lap='$tgl', kriteria='$namaKriteria'")->where("id_calon_kr='$data[id_calon_kr]' and tanggal_lap='$tgl' and kriteria='$namaKriteria'")->count();
+                                            }
                                         ?>
                                         <td><?=  $nilaiGAP ?></td>
                                         <?php endforeach ?>
@@ -283,7 +292,7 @@
                                             $tgl = date("Y-m-d");
                                             $nilaiFinal = 0.6*$nilaiCore + 0.4*$nilaiSecondary;
 
-                                            if ($nilaiFinal < 3) {
+                                            if ($nilaiFinal < 3.5) {
                                                 $keterangan = "Ditolak";
                                             } else {
                                                 $keterangan = "Diterima";
@@ -321,20 +330,20 @@
                                 <tr>
                                     <th>Nama </th>
                                     <th>Nilai Total</th>
-                                    <th>Rank</th>
+                                    <th>Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                     $x=1;
                                     // foreach($db->select('DISTINCT *','hasil_akhir')->order_by('hasil_akhir.nilai','desc')->get() as $data):
-                                    foreach($db->select('*','hasil_akhir')->where("minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->get() as $data):
+                                    foreach($db->select('*','hasil_akhir')->where("tanggal_lap='$tgl' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->get() as $data):
                                         
                                 ?>
                                     <tr>
                                         <td><?= $data['nama']?></td>
                                         <td><?= $data['nilai']  ?></td>
-                                        <td><?= $x++  ?></td>
+                                        <td><?= $data['keterangan'] ?></td>
                                     </tr>
                                 <?php
                                     endforeach;

@@ -112,8 +112,8 @@
 		}
 
 		//nilaigap
-		function banding($id_kr,$id_subkriteria,$nilai_gap,$nilai_bobot,$tanggal_lap){
-			if ($this->insert('banding',"'$id_kr','$id_subkriteria','$nilai_gap','$nilai_bobot','$tanggal_lap'")->count()){
+		function banding($id_kr,$id_subkriteria,$nilai_gap,$nilai_bobot,$tanggal_lap,$kriteriaz,$nama){
+			if ($this->insert('banding',"'','$id_kr','$id_subkriteria','$nilai_gap','$nilai_bobot','$tanggal_lap','$kriteriaz','$nama'")->count()){
 				// echo "banding disimpan";
 			}
 		}
@@ -161,6 +161,21 @@
 			foreach ($this->select('nilai','sub_kriteria')->where("id_subkriteria='$subkriteria'")->get() as $value) {
         		return $value[0];
             }
+		}
+
+		function getidsubkriteria($subkriteriaz)
+		{
+			foreach ($this->select('id_subkriteria','sub_kriteria')->where("id_subkriteria='$subkriteriaz'")->get() as $value) {
+        		return $value[0];
+            }
+		}
+
+		function getnamekriteria($typeKr)
+		{
+			foreach ($this->select('kriteria','kriteria')->where("id_kriteria='$typeKr'")->get() as $value) {
+        		return $value[0];
+            }
+			// echo "jancok";
 		}
 
 		function gettypekriteria($typeKr)

@@ -15,23 +15,15 @@
             <br/>  
               <div class="panel panel-default">
                   <div class="panel-heading">
-                  Laporan Penilaian
+                  Laporan Hasil Keputusan
                   </div>
                   <div class="panel-body">
-                      <form method="post" action="lap_hasiltpa.php" enctype="multipart/form-data">
+                      <form method="post" action="lap_nilai.php" enctype="multipart/form-data">
                           <?php if (!empty($_GET['error_msg'])): ?>
                               <div class="alert alert-danger">
                                   <?= $_GET['error_msg']; ?>
                               </div>
                           <?php endif ?>
-                            <!-- <div class="form-group">
-                              <label for="nama">Pilih Tanggal Laporan</label>
-                              <select required class="form-control" ID="tanggal_lap" name="tanggal_lap">
-                                <?php  foreach ($db->select('DISTINCT tanggal_lap','hasil_akhir')->get() as $val): ?> 
-                                  <option value="<?= $val['tanggal_lap']?>"><?= $val['tanggal_lap'] ?></option>
-                                <?php endforeach ?>
-                                </select>
-                          </div> -->
                           <div class="form-group">
                               <label for="startdate">Tanggal Mulai</label>
                               <input type="date" required class="form-control" id="startdate" name="startdate">

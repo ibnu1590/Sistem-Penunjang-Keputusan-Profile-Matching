@@ -29,7 +29,7 @@
                               </div>
                               <label for="nama">Nama Kreditur</label>
                                   <select required class="form-control" name="id_calon_kr">
-                                  <?php  foreach ($db->select('*','kreditur')->where('id_calon_kr not in (select id_calon_kr from hasil_akhir)')->get() as $val): ?> 
+                                  <?php  foreach ($db->select('*','kreditur')->where('id_calon_kr not in (select id_calon_kr from hasil_akhir) and id_calon_kr not in (select id_calon_kr from hasil_tpa)')->get() as $val): ?> 
                                   <option value="<?= $val['id_calon_kr']?>"><?= $val['nama'] ?></option>
                                   <?php endforeach ?>
                                   </select>

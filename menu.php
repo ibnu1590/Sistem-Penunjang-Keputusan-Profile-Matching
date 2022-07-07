@@ -40,6 +40,7 @@
                                     <li><a href="lap_kriteria.php" id="ds">Lap Kriteria</a></li>
                                     <li><a href="lap_subkriteria.php" id="sk">Lap Sub Kriteria</a></li>
                                     <li><a href="tampil_penilaian.php" id="sk">Lap Penilaian</a></li>
+                                    <li><a href="tampil_hasilkeputusan.php" id="sk">Lap Hasil Keputusan</a></li>
                                 </ul>
                             </li>
                             <li><a href="logout.php" id="ds">Logout</a></li>

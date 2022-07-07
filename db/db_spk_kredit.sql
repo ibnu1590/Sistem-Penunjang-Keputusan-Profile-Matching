@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.24-MariaDB)
-# Date: 2022-07-04 20:07:43
+# Date: 2022-07-08 01:24:26
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -27,6 +27,29 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` VALUES (1,'superadmin','Jambi','741','admin@gmail.com','admin','21232f297a57a5a743894a0e4a801fc3','admin'),(10,'cmo','-','089606853329','-','cmo','99330263c899fa050dc18add519cae39','cmo'),(11,'finance','-','089606853322','-','finance','57336afd1f4b40dfd9f5731e35302fe5','finance');
 
 #
+# Structure for table "banding"
+#
+
+DROP TABLE IF EXISTS `banding`;
+CREATE TABLE `banding` (
+  `id_match` int(11) NOT NULL AUTO_INCREMENT,
+  `id_calon_kr` int(11) DEFAULT NULL,
+  `id_subkriteria` int(11) DEFAULT NULL,
+  `nilai_gap` int(11) DEFAULT NULL,
+  `nilai_bobot` float(11,1) DEFAULT NULL,
+  `tanggal_lap` date DEFAULT NULL,
+  `kriteria` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_match`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4;
+
+#
+# Data for table "banding"
+#
+
+INSERT INTO `banding` VALUES (49,19,1,-2,3.0,'2022-07-06','Usia','asd'),(50,19,1,-2,3.0,'2022-07-06','Gaji Perbulan','asd'),(51,19,1,-2,3.0,'2022-07-06','Status Tempat Tinggal','asd'),(52,19,5,2,3.5,'2022-07-06','Pekerjaan','asd'),(53,19,5,2,3.5,'2022-07-06','Umur Motor','asd'),(54,20,1,-2,3.0,'2022-07-06','Usia','qwe'),(55,20,1,-2,3.0,'2022-07-06','Gaji Perbulan','qwe'),(56,20,1,-2,3.0,'2022-07-06','Status Tempat Tinggal','qwe'),(57,20,5,2,3.5,'2022-07-06','Pekerjaan','qwe'),(58,20,5,2,3.5,'2022-07-06','Umur Motor','qwe'),(71,19,1,-2,3.0,'2022-07-07','Usia','asd'),(72,19,1,-2,3.0,'2022-07-07','Gaji Perbulan','asd'),(73,19,1,-2,3.0,'2022-07-07','Status Tempat Tinggal','asd'),(74,19,5,2,3.5,'2022-07-07','Pekerjaan','asd'),(75,19,5,2,3.5,'2022-07-07','Umur Motor','asd'),(76,20,1,-2,3.0,'2022-07-07','Usia','qwe'),(77,20,1,-2,3.0,'2022-07-07','Gaji Perbulan','qwe'),(78,20,1,-2,3.0,'2022-07-07','Status Tempat Tinggal','qwe'),(79,20,5,2,3.5,'2022-07-07','Pekerjaan','qwe'),(80,20,5,2,3.5,'2022-07-07','Umur Motor','qwe');
+
+#
 # Structure for table "hasil_akhir"
 #
 
@@ -42,13 +65,13 @@ CREATE TABLE `hasil_akhir` (
   `keterangan` varchar(12) DEFAULT NULL,
   `id_akhir` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_akhir`)
-) ENGINE=InnoDB AUTO_INCREMENT=2213 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2354 DEFAULT CHARSET=utf8mb4;
 
 #
 # Data for table "hasil_akhir"
 #
 
-INSERT INTO `hasil_akhir` VALUES (14,'Suyono',3.00,'2022-07-04','2','Jul','2017','Diterima',2263),(15,'Arief Wijaya',4.10,'2022-07-04','2','Jul','2017','Diterima',2264),(16,'Joko Suprapto',4.20,'2022-07-04','2','Jul','2017','Diterima',2265),(17,'Andre',3.00,'2022-07-04','2','Jul','2017','Diterima',2266),(18,'Stevi Fauzan',4.10,'2022-07-04','2','Jul','2017','Diterima',2267),(14,'Suyono',3.00,'2022-07-04','2','Jul','2018','Diterima',2268),(15,'Arief Wijaya',4.10,'2022-07-04','2','Jul','2018','Diterima',2269),(16,'Joko Suprapto',4.20,'2022-07-04','2','Jul','2018','Diterima',2270),(17,'Andre',3.00,'2022-07-04','2','Jul','2018','Diterima',2271),(18,'Stevi Fauzan',4.10,'2022-07-04','2','Jul','2018','Diterima',2272),(14,'Suyono',3.00,'2022-07-04','2','Jul','2019','Diterima',2273),(15,'Arief Wijaya',4.10,'2022-07-04','2','Jul','2019','Diterima',2274),(16,'Joko Suprapto',4.20,'2022-07-04','2','Jul','2019','Diterima',2275),(17,'Andre',3.00,'2022-07-04','2','Jul','2019','Diterima',2276),(18,'Stevi Fauzan',4.10,'2022-07-04','2','Jul','2019','Diterima',2277),(14,'Suyono',3.00,'2022-07-04','2','Jul','2022','Diterima',2278),(15,'Arief Wijaya',4.10,'2022-07-04','2','Jul','2022','Diterima',2279),(16,'Joko Suprapto',4.20,'2022-07-04','2','Jul','2022','Diterima',2280),(17,'Andre',3.00,'2022-07-04','2','Jul','2022','Diterima',2281),(18,'Stevi Fauzan',3.00,'2022-07-04','2','Jul','2022','Diterima',2282);
+INSERT INTO `hasil_akhir` VALUES (14,'Suyono',3.20,'2022-07-05','2','Jul','2022','Ditolak',2340),(15,'Arief Wijaya',3.20,'2022-07-05','2','Jul','2022','Ditolak',2341),(16,'Joko Suprapto',3.20,'2022-07-05','2','Jul','2022','Ditolak',2342),(17,'Andre',3.20,'2022-07-05','2','Jul','2022','Ditolak',2343),(18,'Stevi Fauzan',3.20,'2022-07-05','2','Jul','2022','Ditolak',2344),(19,'asd',3.20,'2022-07-07','2','Jul','2022','Ditolak',2350),(20,'qwe',3.20,'2022-07-07','2','Jul','2022','Ditolak',2351),(19,'asd',3.20,'2022-07-07','2','Jul','2022','Ditolak',2352),(20,'qwe',3.20,'2022-07-07','2','Jul','2022','Ditolak',2353);
 
 #
 # Structure for table "hasil_tpa"
@@ -65,13 +88,13 @@ CREATE TABLE `hasil_tpa` (
   `umur_motor` float(10,2) DEFAULT NULL,
   PRIMARY KEY (`id_test`),
   KEY `id_calon_kr` (`id_calon_kr`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=133 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "hasil_tpa"
 #
 
-INSERT INTO `hasil_tpa` VALUES (83,14,119,124.00,129.00,138.00,143.00),(84,15,120,127.00,130.00,137.00,143.00),(85,16,119,125.00,131.00,135.00,141.00),(86,17,119,124.00,129.00,138.00,143.00),(87,18,119,124.00,129.00,138.00,143.00);
+INSERT INTO `hasil_tpa` VALUES (131,19,119,124.00,129.00,134.00,139.00),(132,20,119,124.00,129.00,134.00,139.00);
 
 #
 # Structure for table "kreditur"
@@ -92,13 +115,13 @@ CREATE TABLE `kreditur` (
   `Jabatan` varchar(100) NOT NULL,
   `alasan` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_calon_kr`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "kreditur"
 #
 
-INSERT INTO `kreditur` VALUES (14,'-','Suyono','Pria','Kampung Nrogtog pinang','089606853329','','1983-02-01','Jakarta','S1','SPV Gudang','Butuh uang untuk biaya persalinan'),(15,'-','Arief Wijaya','Pria','JL. Sejahtera No 15 Pinang Tangerang','089606877777','','1977-01-17','Jakarta','S1','Admin ','Butuh uang untuk pelunasan motor'),(16,'-','Joko Suprapto','Pria','JL Srengseng jakarta barat','089608989999','','1971-12-16','Jakarta','S1','Driver','Butuh uang untuk biaya sekolah anak'),(17,'-','Andre','Pria','JL peninggilan raya no 22','089789876656','','1992-02-13','Jakarta','S1','Staff','Butuh uang untuk bayar cicilan '),(18,'-','Stevi Fauzan','Pria','Pondok Jagung tangsel','089767675543','','1996-07-24','Jakarta','S1','Staff','Butuh uang untuk kebutuhan hidup'),(19,'-','asd','Pria','Jl. Ciledug Raya','089606854454','','1999-10-09','asd','SD','asd','asd');
+INSERT INTO `kreditur` VALUES (14,'-','Suyono','Pria','Kampung Nrogtog pinang','089606853329','','1983-02-01','Jakarta','S1','SPV Gudang','Butuh uang untuk biaya persalinan'),(15,'-','Arief Wijaya','Pria','JL. Sejahtera No 15 Pinang Tangerang','089606877777','','1977-01-17','Jakarta','S1','Admin ','Butuh uang untuk pelunasan motor'),(16,'-','Joko Suprapto','Pria','JL Srengseng jakarta barat','089608989999','','1971-12-16','Jakarta','S1','Driver','Butuh uang untuk biaya sekolah anak'),(17,'-','Andre','Pria','JL peninggilan raya no 22','089789876656','','1992-02-13','Jakarta','S1','Staff','Butuh uang untuk bayar cicilan '),(18,'-','Stevi Fauzan','Pria','Pondok Jagung tangsel','089767675543','','1996-07-24','Jakarta','S1','Staff','Butuh uang untuk kebutuhan hidup'),(19,'-','asd','Pria','Jl. Ciledug Raya','089606854454','','1999-10-09','asd','SD','asd','asd'),(20,'-','qwe','Pria','qwe','123','','1888-10-06','jkt','SD','asd','asd');
 
 #
 # Structure for table "kriteria"

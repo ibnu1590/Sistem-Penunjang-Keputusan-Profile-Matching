@@ -37,12 +37,13 @@
                                   <input type="number" name="bobot" class="form-control bobot" value="<?= $data['bobot']?>" pattern="^[0-9\.\-\/]+$">
                               </div>
                               <div class="form-group">
-                                  <label>Type</label>
-                                  <select class="form-control" name="type">
-                                      <option value="Core Factor" <?php if($data['type']=='Core Factor'){ echo 'selected'; }?>>Core Factor</option>
-                                      <option value="Secondary Factor" <?php if($data['type']=='Secondary Factor'){ echo 'selected'; }?>>Secondary Factor</option>
-                                  </select>
-                              </div>  
+                                    <label for="nama">Type</label>
+                                        <select required class="form-control" ID="type" name="type">
+                                        <option value="">-Pilih Tipe Kriteria-</option>
+                                        <option <?php if( $data['type']=='Core Factor'){echo "selected"; } ?> value='Core Factor'>Core Factor</option>
+                                        <option <?php if( $data['type']=='Secondary Fa'){echo "selected"; } ?> value='Secondary Factor'>Secondary Factor</option>
+                                        </select>
+                                </div> 
                           <?php endforeach ?>
                           
                           <div class="form-group">

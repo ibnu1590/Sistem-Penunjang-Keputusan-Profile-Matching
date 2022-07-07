@@ -112,8 +112,8 @@
 		}
 
 		//nilaigap
-		function banding($id_kr,$id_subkriteria,$nilai_gap,$nilai_bobot,$tanggal_lap,$kriteriaz,$nama){
-			if ($this->insert('banding',"'','$id_kr','$id_subkriteria','$nilai_gap','$nilai_bobot','$tanggal_lap','$kriteriaz','$nama'")->count()){
+		function match($id_kr,$id_subkriteria,$nilai_gap,$nilai_bobot,$tanggal_lap,$kriteriaz,$nama){
+			if ($this->insert('match_',"'','$id_kr','$id_subkriteria','$nilai_gap','$nilai_bobot','$tanggal_lap','$kriteriaz','$nama'")->count()){
 				// echo "banding disimpan";
 			}
 		}

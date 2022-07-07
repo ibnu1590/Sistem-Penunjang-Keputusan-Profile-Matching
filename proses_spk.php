@@ -142,11 +142,12 @@
                                             }
                                             $tgl = date("Y-m-d");
 
-                                            if($db->select('id_calon_kr','banding')->where("id_calon_kr='$data[id_calon_kr]' and tanggal_lap='$tgl' and kriteria='$namaKriteria'")->count() == 0){
-                                                $db->banding($data['id_calon_kr'],$nilaiSubkriteria,$nilai_gap,$nilaiGAP,$tgl,$namaKriteria,$data['nama']);
+                                            if($db->select('id_calon_kr','match_')->where("id_calon_kr='$data[id_calon_kr]' and tanggal_lap='$tgl' and kriteria='$namaKriteria'")->count() == 0){
+                                                
+                                                $db->match($data['id_calon_kr'],$nilaiSubkriteria,$nilai_gap,$nilaiGAP,$tgl,$namaKriteria,$data['nama']);
                                             } else {
-                                                // echo "update";
-                                                $db->update('banding',"id_subkriteria='$nilaiSubkriteria', nilai_gap='$nilai_gap', nilai_bobot='$nilaiGAP', tanggal_lap='$tgl', kriteria='$namaKriteria'")->where("id_calon_kr='$data[id_calon_kr]' and tanggal_lap='$tgl' and kriteria='$namaKriteria'")->count();
+                                                
+                                                $db->update('match_',"id_subkriteria='$nilaiSubkriteria', nilai_gap='$nilai_gap', nilai_bobot='$nilaiGAP', tanggal_lap='$tgl', kriteria='$namaKriteria'")->where("id_calon_kr='$data[id_calon_kr]' and tanggal_lap='$tgl' and kriteria='$namaKriteria'")->count();
                                             }
                                         ?>
                                         <td><?=  $nilaiGAP ?></td>
@@ -309,7 +310,8 @@
                                             if($db->select('id_calon_kr','hasil_akhir')->where("id_calon_kr='$data[id_calon_kr]' and tanggal_lap='$tgl' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->count() == 0){
                                                 $db->insert('hasil_akhir',"'$data[id_calon_kr]','$data[nama]','$nilaiFinal','$tgl','$minggu','$bulan','$tahun','$keterangan',''")->count();
                                             } else {
-                                                $db->update('hasil_akhir',"nilai='$nilaiFinal',tanggal_lap='$tgl',minggu='$minggu',bulan='$bulan',tahun='$tahun',keterangan='$keterangan'")->where("id_calon_kr='$data[id_calon_kr]' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->count();
+                                                // echo "update suyono";
+                                                $db->update('hasil_akhir',"nilai='$nilaiFinal'")->where("id_calon_kr='$data[id_calon_kr]' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->count();
                                             }
                                             //close
                                         ?>
@@ -337,7 +339,7 @@
                                 <?php
                                     $x=1;
                                     // foreach($db->select('DISTINCT *','hasil_akhir')->order_by('hasil_akhir.nilai','desc')->get() as $data):
-                                    foreach($db->select('*','hasil_akhir')->where("tanggal_lap='$tgl' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun'")->get() as $data):
+                                    foreach($db->select('*','hasil_akhir')->where("tanggal_lap='$tgl' and minggu='$minggu' and bulan='$bulan' and tahun='$tahun' and id_calon_kr in (select id_calon_kr from hasil_tpa)")->get() as $data):
                                         
                                 ?>
                                     <tr>

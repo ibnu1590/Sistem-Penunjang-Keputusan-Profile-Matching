@@ -131,11 +131,12 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 $pdf->SetFont('times','',10);
 // add a page
 $pdf->AddPage();
-
+$date1=date_create($startdate);
+$date2=date_create($enddate);
 $htmlTable =
 '
+<p>Periode '.date_format($date1,"d-m-Y").' - '.date_format($date2,"d-m-Y").' </p></p>
 <table border="1" cellpadding="4" >
-<br>
 <thead>
         <tr>
             <th>Nama</th>
@@ -150,8 +151,9 @@ $htmlTable =
     </thead>
     <tbody>';
         $no=1; 
-        foreach($db->select('*','banding')->where('tanggal_lap BETWEEN '."'"."$startdate"."'".' AND '."'"."$enddate"."'".'')->get() as $data):
-    $htmlTable .='<tr>
+        foreach($db->select('*','match_')->where('tanggal_lap BETWEEN '."'"."$startdate"."'".' AND '."'"."$enddate"."'".'')->get() as $data):
+            $tanggalLaporan=date_create($data['tanggal_lap']);
+            $htmlTable .='<tr>
             <td>'.$data['nama'].'</td>
             <td>'.$data['kriteria'].'</td>
             <td>'.$data['id_subkriteria'].'</td>
@@ -159,7 +161,7 @@ $htmlTable =
             <td>'.$data['nilai_gap'].'</td>
             <td>'.$data['nilai_gap'].'</td>
             <td>'.$data['nilai_bobot'].'</td>
-            <td>'.$data['tanggal_lap'].'</td>
+            <td>'.date_format($tanggalLaporan,"d-m-Y").'</td>
         </tr>';
         $no++; endforeach;
         $htmlTable .= '</tbody>

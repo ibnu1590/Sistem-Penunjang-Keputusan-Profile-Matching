@@ -133,9 +133,11 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 $pdf->SetFont('times','',10);
 // add a page
 $pdf->AddPage();
-
+$date1=date_create($startdate);
+$date2=date_create($enddate);
 $htmlTable =
 '
+<p>Periode '.date_format($date1,"d-m-Y").' - '.date_format($date2,"d-m-Y").' </p></p>
 <table border="1" cellpadding="4" >
 <thead>
         <tr>

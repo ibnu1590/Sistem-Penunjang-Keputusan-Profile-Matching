@@ -39,7 +39,7 @@
                                     <li><a href="lap_admin.php" id="ck">Lap Admin</a></li>
                                     <li><a href="lap_kreditur.php" id="ck">Lap Kreditur</a></li>
                                     <li><a href="lap_kriteria.php" id="ds">Lap Kriteria</a></li>
-                                    <li><a href="lap_subkriteria.php" id="sk">Lap Sub Kriteria</a></li>
+                                    <li><a href="lap_produk.php" id="sk">Lap Produk</a></li>
                                     <li><a href="tampil_penilaian.php" id="sk">Lap Penilaian</a></li>
                                     <li><a href="tampil_hasilkeputusan.php" id="sk">Lap Hasil Keputusan</a></li>
                                 </ul>

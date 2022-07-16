@@ -7,13 +7,13 @@
 	
 	// echo $crt;
 
-	$dataKriteriaConvert = strtolower($kriteria);
-	$crt_tmp = explode(' ',$dataKriteriaConvert);
+	$dataProdukConvert = strtolower($kriteria);
+	$crt_tmp = explode(' ',$dataProdukConvert);
 	$crt = implode('_', $crt_tmp);
 	
-	if($db->insert('kriteria',"'','$crt','$bobot','$status'")->count() == 1){
+	if($db->insert('produk',"'','$crt'")->count() == 1){
 		// $db->alter('hasil_tpa','add column',"$crt",'float(10,2)')->get();
-		header('location:tampil_kriteria.php');
+		header('location:tampil_produk.php');
 		// echo $type;
 	}
 ?>

@@ -14,36 +14,18 @@
             <br/>  
               <div class="panel panel-default">
                   <div class="panel-heading">
-                    Form Kriteria
+                    Form Produk
                   </div>
                   <div class="panel-body">
-                      <form method="post" action="insert_kriteria.php" enctype="multipart/form-data">
+                      <form method="post" action="insert_produk.php" enctype="multipart/form-data">
                           <?php if (!empty($_GET['error_msg'])): ?>
                               <div class="alert alert-danger">
                                   <?= $_GET['error_msg']; ?>
                               </div>
                           <?php endif ?>
                           <div class="form-group">
-                              <label for="nama">Nama Kriteria</label>
+                              <label for="nama">Nama Produk</label>
                               <input type="text" required class="form-control" id="kriteria" name="kriteria">
-                          </div>
-                          <div class="form-group">
-                              <label>Bobot</label>
-                              <?php 
-                                //   $n = 0; 
-                                //   foreach ($db->select('bobot','kriteria')->get() as $k){
-                                //      $n += $k['bobot'];
-                                //   }
-                                //   $h = 1000-$n;
-                               ?>
-                              <input type="number" required name="bobot" class="form-control bobot " pattern="^[0-9\.\-\/]+$" value="<?= $h ?>">
-                          </div>
-                          <div class="form-group">
-                              <label>Status</label>
-                              <select class="form-control" name="status">
-                                    <option value="Core Factor">Core Factor</option>
-                                    <option value="Secondary Factor">Secondary Factor</option>
-                                </select>
                           </div>
                           <div class="form-group">
                               <button class="btn btn-primary">Simpan</button>

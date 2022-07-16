@@ -7,8 +7,8 @@
 	foreach ($db->select('kriteria','kriteria')->where("id_kriteria='$id'")->get() as $r) {
 		echo $k = $r['kriteria'];
 	}
-	if($db->update('kriteria',"kriteria='$crt',bobot='$bobot',type='$type'")->where("id_kriteria='$id'")->count()==1){
-		$db->alter('hasil_tpa','change',"$k $crt","int")->get();
+	if($db->update('kriteria',"nama_kriteria='$crt',bobot='$bobot',status='$type'")->where("id_kriteria='$id'")->count()==1){
+		// $db->alter('hasil_tpa','change',"$k $crt","int")->get();
 		header('location:tampil_kriteria.php');
 	} else {
 		//echo "update gagal";

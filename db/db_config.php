@@ -156,9 +156,9 @@
             }
 		}
 		
-		function getnilaisubkriteria($subkriteria)
+		function getnilaiprofilekreditur($nilaiprofilek)
 		{
-			foreach ($this->select('nilai','sub_kriteria')->where("id_subkriteria='$subkriteria'")->get() as $value) {
+			foreach ($this->select('nilai_kreditur','profile_kreditur')->where("id_calon_kr='$nilaiprofilek'")->get() as $value) {
         		return $value[0];
             }
 		}
@@ -175,7 +175,6 @@
 			foreach ($this->select('kriteria','kriteria')->where("id_kriteria='$typeKr'")->get() as $value) {
         		return $value[0];
             }
-			// echo "jancok";
 		}
 
 		function gettypekriteria($typeKr)
@@ -183,8 +182,8 @@
 			foreach ($this->select('bobot','kriteria')->where("id_kriteria='$typeKr'")->get() as $value) {
         		return $value[0];
             }
-			// echo "jancok";
 		}
+
 
 		function weekOfMonth($qDate) {
 			$dt = strtotime($qDate);

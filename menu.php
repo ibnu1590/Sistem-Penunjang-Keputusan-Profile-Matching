@@ -20,13 +20,14 @@
                                     <li><a href="tampil_admin.php" id="AD">Data Admin</a></li>
                                     <li><a href="tampil_kreditur.php" id="ck">Data Kreditur</a></li>
                                     <li><a href="tampil_kriteria.php" id="ds">Data Kriteria</a></li>
-                                    <li><a href="tampil_subkriteria.php" id="sk">Data Sub Kriteria</a></li>
+                                    <li><a href="tampil_produk.php" id="sk">Data Produk</a></li>
                                 </ul>
                             </li>
                             <?php 
                                 if ($_SESSION['role'] == 'cmo') {
                             ?>
-                            <li><a href="tampil_tpa.php" id="tpa">Penilaian Kreditur</a></li>
+                            <li><a href="tampil_profile_produk.php" id="tpa">Profile Produk</a></li>
+                            <li><a href="tampil_profile_kreditur.php" id="tpu">Profile Kreditur</a></li>
                             <li><a href="proses_spk.php" id="proses">Proses SPK</a></li> 
                             <?php
                                 }

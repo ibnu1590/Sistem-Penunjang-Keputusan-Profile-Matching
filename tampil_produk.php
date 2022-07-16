@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="page-head-line">Master Data Kriteria</h4>
+                    <h4 class="page-head-line">Master Data Produk</h4>
                 </div>
             </div>
             <div class="row">
@@ -24,34 +24,30 @@
                 </div>
             </div>  
             <div class="row">
-                <div><a href="input_kriteria.php" class="btn btn-info">Tambah Data</a></div>
+                <div><a href="input_produk.php" class="btn btn-info">Tambah Data</a></div>
                 <br>
                 <div class="table-responsive">
                     <table id="example1" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Kriteria</th>
-                                <th>Status</th>
-                                <th>Bobot</th>
+                                <th>Nama Produk</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no=1; foreach($db->select('*','kriteria')->get() as $data): ?>
+                            <?php $no=1; foreach($db->select('*','produk')->get() as $data): ?>
                             <tr>
                                 <td><?= $no;?></td>
                                 <td>
                                     <?php
-                                        $tmp = explode('_',$data['nama_kriteria']);
+                                        $tmp = explode('_',$data['nama_produk']);
                                         echo ucwords(implode(' ',$tmp));
                                     ?>
                                 </td>
-                                <td><?= $data['status']?></td>
-                                <td><?= $data['bobot']?></td>
                                 <td>
-                                    <a class="btn btn-warning" href="edit_kriteria.php?id=<?php echo $data[0]?>">Edit</a>
-                                    <a class="btn btn-danger" onclick="return confirm('Yakin Hapus?')" href="delete_kriteria.php?id=<?php echo $data[0]?>">Hapus</a>
+                                    <a class="btn btn-warning" href="edit_produk.php?id=<?php echo $data[0]?>">Edit</a>
+                                    <a class="btn btn-danger" onclick="return confirm('Yakin Hapus?')" href="delete_produk.php?id=<?php echo $data[0]?>">Hapus</a>
                                 </td>
                             </tr>
                             <?php $no++; endforeach; ?>

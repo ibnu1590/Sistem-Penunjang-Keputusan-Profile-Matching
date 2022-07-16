@@ -27,7 +27,7 @@
                               <input type="hidden" name="id_calon_kr" value="<?= $val['id_calon_kr']?>">
                               <div class="form-group">
                                   <label for="nama">NIK</label>
-                                  <input type="text" readonly class="form-control" id="nik" name="nik" value="<?= $val['NIK']?>">
+                                  <input type="text" class="form-control" id="nik" name="nik" value="<?= $val['NIK']?>">
                               </div>
                               <div class="form-group">
                                   <label for="nama">Nama Kreditur</label>

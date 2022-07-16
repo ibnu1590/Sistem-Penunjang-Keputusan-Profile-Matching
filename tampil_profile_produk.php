@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="page-head-line">Master Data Kriteria</h4>
+                    <h4 class="page-head-line">Profile Produk</h4>
                 </div>
             </div>
             <div class="row">
@@ -24,34 +24,36 @@
                 </div>
             </div>  
             <div class="row">
-                <div><a href="input_kriteria.php" class="btn btn-info">Tambah Data</a></div>
+                <div><a href="input_profile_produk.php" class="btn btn-info">Tambah Data</a></div>
                 <br>
                 <div class="table-responsive">
                     <table id="example1" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Kriteria</th>
-                                <th>Status</th>
-                                <th>Bobot</th>
+                                <th>Nama</th>
+                                <?php foreach ($db->select('kriteria','nama_kriteria')->get() as $kr ): ?>
+                                <th>
+                                    <?php
+                                        $tmp = explode('_',$kr['nama_kriteria']);
+                                        echo ucwords(implode(' ',$tmp));
+                                    ?>
+                                </th>
+                                <?php endforeach ?>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no=1; foreach($db->select('*','kriteria')->get() as $data): ?>
+                            <?php $no=1; foreach($db->select('kreditur.id_calon_kr,kreditur.nama,hasil_tpa.*','kreditur,hasil_tpa')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data): ?>
                             <tr>
                                 <td><?= $no;?></td>
+                                <td><?= $data['nama']?></td>
+                                <?php foreach ($db->select('kriteria','kriteria')->get() as $k): ?>
+                                <td><?= $db->getnamesubkriteria($data[$k['kriteria']])?> (Nilai = <?= $db->getnilaisubkriteria($data[$k['kriteria']])?>)</td>
+                                <?php endforeach ?>
                                 <td>
-                                    <?php
-                                        $tmp = explode('_',$data['nama_kriteria']);
-                                        echo ucwords(implode(' ',$tmp));
-                                    ?>
-                                </td>
-                                <td><?= $data['status']?></td>
-                                <td><?= $data['bobot']?></td>
-                                <td>
-                                    <a class="btn btn-warning" href="edit_kriteria.php?id=<?php echo $data[0]?>">Edit</a>
-                                    <a class="btn btn-danger" onclick="return confirm('Yakin Hapus?')" href="delete_kriteria.php?id=<?php echo $data[0]?>">Hapus</a>
+                                    <a class="btn btn-warning" href="edit_tpa.php?id=<?php echo $data[0]?>">Edit</a>
+                                    <a class="btn btn-danger" onclick="return confirm('Yakin Hapus?')" href="delete_tpa.php?id=<?php echo $data[0]?>">Hapus</a>
                                 </td>
                             </tr>
                             <?php $no++; endforeach; ?>
@@ -59,6 +61,7 @@
                     </table>    
                 </div>
             </div>
+            
         </div>
     </div>
     <!-- CONTENT-WRAPPER SECTION END-->
@@ -66,11 +69,11 @@
 <?php include 'footer.php'; ?>
 <script type="text/javascript">
     $(function(){
-        $("#ds").addClass('menu-top-active');
+        $("#tpa").addClass('menu-top-active');
     });
 </script>
 <script type="text/javascript">
             $(function() {
                 $('#example1').dataTable();
             });
-        </script>
+</script>

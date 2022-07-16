@@ -15,16 +15,16 @@
                 </div>
             </div>
             <div class="row">
-                <h3>Tabel Hasil Penilaian</h3>
+                <h3>Penilaian Kreditur</h3>
                 <div class="table-responsive">
                     <table id="example0" class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>Nama </th>
-                                <?php foreach ($db->select('kriteria','kriteria')->get() as $k): ?>
+                                <?php foreach ($db->select('nama_kriteria','kriteria')->get() as $k): ?>
                                 <th>
                                     <?php
-                                        $tmp = explode('_',$k['kriteria']);
+                                        $tmp = explode('_',$k['nama_kriteria']);
                                         echo ucwords(implode(' ',$tmp));
                                     ?>
                                 </th>
@@ -33,12 +33,12 @@
                         </thead>
                         <tbody>
                             <?php
-                                foreach ($db->select('kreditur.nama,hasil_tpa.*','kreditur,hasil_tpa')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data):
+                                foreach ($db->select('kreditur.nama,profile_kreditur.*','kreditur,profile_kreditur')->where('kreditur.id_calon_kr=profile_kreditur.id_calon_kr')->get() as $data):
                             ?>
                                 <tr>
                                     <td><?= $data['nama']?></td>
-                                    <?php foreach ($db->select('kriteria','kriteria')->get() as $td): ?>
-                                    <td><?= $db->getnilaisubkriteria($data[$td['kriteria']])?></td>
+                                    <?php foreach ($db->select('nama_kriteria','kriteria')->get() as $td): ?>
+                                    <td><?= $db->getnilaiprofilekreditur(14)?></td>
                                     <?php endforeach ?>
                                 </tr>
                             <?php

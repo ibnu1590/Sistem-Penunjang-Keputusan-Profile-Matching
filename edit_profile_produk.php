@@ -33,7 +33,7 @@
                             <?php 
                             session_start();
                             $tmpIdKriteria = array();
-                            foreach ($db->select('produk.nama_produk,kriteria.id_kriteria,kriteria.nama_kriteria,profile_produk.nilai_produk','profile_produk,produk,kriteria')->where("profile_produk.id_produk=produk.id_produk AND profile_produk.id_kriteria=kriteria.id_kriteria")->get() as $r): 
+                            foreach ($db->select('produk.nama_produk,kriteria.id_kriteria,kriteria.nama_kriteria,profile_produk.nilai_produk','profile_produk,produk,kriteria')->where("profile_produk.id_kriteria=kriteria.id_kriteria AND profile_produk.id_produk=".$_GET['id'])->group_by('profile_produk.id_kriteria')->get() as $r): 
                                 array_push($tmpIdKriteria,$r['id_kriteria']);
                                 $_SESSION['id_kriteria'] = $tmpIdKriteria;
                             ?>

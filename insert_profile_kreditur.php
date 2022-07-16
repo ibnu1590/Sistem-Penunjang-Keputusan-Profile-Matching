@@ -11,7 +11,7 @@
    
 	}
 
-	echo $ids = implode(',', $ids);
+	// echo $ids = implode(',', $ids);
 
     $tgl = date("Y-m-d");
 
@@ -19,7 +19,11 @@
 	reset($_SESSION['id_kriteria']);
 	while (list($arr_key, $arr_val) = each($_POST['place'])) {
 		list($arr2_key, $arr2_val) = each($_SESSION['id_kriteria']);
-		$db->insert('profile_kreditur',"'$arr2_val','$id_kreditur','$arr_val','$tgl'")->count() == 1;
+		// $db->insert('profile_kreditur',"'$arr2_val','$id_kreditur','$arr_val','$tgl'")->count() == 1;
+
+	if($db->insert('profile_kreditur',"'$arr2_val','$id_kreditur','$arr_val','$tgl'")->count() == 1){
+		header('location:tampil_profile_kreditur.php');
+	}
 	}
 
     // foreach ($_POST['place'] as $nilai) :
@@ -32,6 +36,7 @@
     // foreach ($_SESSION['id_kriteria'] as $zz) :
     //     echo $zz;
     // endforeach;
+	
 
 
   

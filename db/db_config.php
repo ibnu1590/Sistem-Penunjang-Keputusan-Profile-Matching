@@ -2,7 +2,7 @@
 	class database extends PDO{
 		protected $dsn = 'mysql:host=localhost;dbname=db_spk_kredit';
 		protected $dsu = 'root';
-		protected $dsp = '';
+		protected $dsp = 'admin';
 		private $cmd = '';
 
 		function __construct(){
@@ -172,7 +172,7 @@
 
 		function getnamekriteria($typeKr)
 		{
-			foreach ($this->select('kriteria','kriteria')->where("id_kriteria='$typeKr'")->get() as $value) {
+			foreach ($this->select('nama_kriteria','kriteria')->where("id_kriteria='$typeKr'")->get() as $value) {
         		return $value[0];
             }
 		}
@@ -183,6 +183,7 @@
         		return $value[0];
             }
 		}
+
 
 
 		function weekOfMonth($qDate) {
@@ -208,6 +209,176 @@
 			}
 			return $retWeek;
 		}
+
+
+		//nambah ini
+		function join($params){
+			$this->cmd .= " inner join $params";
+			return $this;
+		}
+		function getnilaiprofilekreditur2($nilaiprofilek,$idkriteria)
+		{
+			foreach ($this->select('nilai_kreditur','profile_kreditur')->where("id_calon_kr='$nilaiprofilek' and id_kriteria='$idkriteria'")->get() as $value) {
+        		return $value[0];
+            }
+		}
+
+		function getketerangan($idkriteria,$nilai){
+			if ($idkriteria == "67"){                                    
+				switch ($nilai) {
+				case "1":
+				  return "2.500.000 – 3.499.000";
+				  break;
+				case "2":
+				  return "3.500.000 – 5.499.000 ";
+				  break;
+				case "3":
+				  return "5.500.000 – 7.999.000";
+				  break;
+				  case "4":
+					return "8.000.000 – 15.000.000 ";
+					break;
+				default:
+				  return "15.000.000 – 50.000.000";
+			  } 
+			 }else if ($idkriteria == "68") { 
+			
+				switch ($nilai) {
+				case "2":
+				  return "46 - 55";
+				  break;
+				case "3":
+				  return "24 - 26";
+				  break;
+				case "4":
+				  return "36 - 45";
+				  break;
+				case "5":
+					return "27 - 35 ";
+					break;
+				default:
+				  return "17 - 23";
+			  }
+
+			} else if ($idkriteria == "69") {
+			
+				switch ($nilai) {
+				case "1":
+				  return "Kost";
+				  break;
+				case "2":
+				  return "Kontrak";
+				  break;
+				case "3":
+				  return "Milik Keluarga";
+				  break;
+				 case "4":
+					return "Milik Sendiri";
+					break;
+  
+				default:
+				  return "Milik Orang Tua";
+			  }
+
+			 } else if ($idkriteria == "72") { 
+
+				switch ($nilai) {
+				case "1":
+				  return "7 Tahun";
+				  break;
+				case "2":
+				  return "6 Tahun";
+				  break;
+				case "3":
+				  return "4 - 5 Tahun";
+				  break;
+				  case "3":
+					return "2 - 3 Tahun";
+					break;
+
+				default:
+				  return "1 Tahun";
+			  }
+			 } else if ($idkriteria == "73") {
+
+				switch ($nilai) {
+				case "1":
+				  return "Pensiunan";
+				  break;
+				case "2":
+				  return "Profesional";
+				  break;
+				case "3":
+				  return "Wiraswasta";
+				  break;
+				case "3":
+					return "Karyawan Swasta";
+					break;
+
+				default:
+				  return "Pns";
+			  }
+
+			 }
+		}
+
+		function getKeterenganValue($idkriteria)
+		{
+			$gaji = array (
+				array("value"=>"1", "keterangan"=>"2.500.000 – 3.499.000 "),
+				array("value"=>"2", "keterangan"=>"3.500.000 – 5.499.000"),
+				array("value"=>"3", "keterangan"=>"5.500.000 – 7.999.000 "),
+				array("value"=>"4", "keterangan"=>"8.000.000 – 15.000.000 "),
+				array("value"=>"5", "keterangan"=>"15.000.000 – 50.000.000 "),
+				
+			  );
+			  $usia = array (
+				array("value"=>"1", "keterangan"=>"17 – 23 "),
+				array("value"=>"2", "keterangan"=>"46 – 55"),
+				array("value"=>"3", "keterangan"=>"24 – 26"),
+				array("value"=>"4", "keterangan"=>"36 – 45"),
+				array("value"=>"5", "keterangan"=>"27 – 35 "),
+				
+			  );
+			  $tempatTinggal = array (
+				array("value"=>"1", "keterangan"=>"Kost"),
+				array("value"=>"2", "keterangan"=>"Kontrak"),
+				array("value"=>"3", "keterangan"=>"Milik Keluarga"),
+				array("value"=>"4", "keterangan"=>"Milik Sendiri"),
+				array("value"=>"5", "keterangan"=>"Milik Orang Tua "),
+				
+			  );
+			  $umurMotor = array (
+				array("value"=>"1", "keterangan"=>"7 Tahun "),
+				array("value"=>"2", "keterangan"=>"6 Tahun "),
+				array("value"=>"3", "keterangan"=>"4 – 5 Tahun"),
+				array("value"=>"4", "keterangan"=>"2 – 3 Tahun "),
+				array("value"=>"5", "keterangan"=>"1 Tahun"),
+				
+			  );
+			  $pekerjaan = array (
+				array("value"=>"1", "keterangan"=>"Pensiunan"),
+				array("value"=>"2", "keterangan"=>"Profesional"),
+				array("value"=>"3", "keterangan"=>"Wiraswasta"),
+				array("value"=>"4", "keterangan"=>"Karyawan Swasta"),
+				array("value"=>"5", "keterangan"=>"PNS"),
+				
+			  );
+			if ($idkriteria == "67"){    
+				return  $gaji;                           
+			 }else if ($idkriteria == "68") { 
+				return  $usia;                           
+			} else if ($idkriteria == "69") {
+				return  $tempatTinggal;                           
+			 } else if ($idkriteria == "72") { 
+				return  $umurMotor;                           
+			 } else if ($idkriteria == "73") {
+				return  $pekerjaan;                           
+
+			 }
+			  
+		}
+		
 		
 		
 	}

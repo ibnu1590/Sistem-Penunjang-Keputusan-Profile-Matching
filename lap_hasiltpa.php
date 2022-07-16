@@ -151,7 +151,7 @@ $htmlTable =
     </thead>
     <tbody>';
         $no=1; 
-        foreach($db->select('*','match_')->where('tanggal_lap BETWEEN '."'"."$startdate"."'".' AND '."'"."$enddate"."'".'')->get() as $data):
+        foreach($db->select('kreditur.nama,kriteria.nama_kriteria,profile_kreditur.nilai_kreditur ,profile_kreditur.periode','profile_kreditur,kreditur,kriteria')->where('tanggal_lap BETWEEN '."'"."$startdate"."'".' AND '."'"."$enddate"."'".'')->get() as $data):
             $tanggalLaporan=date_create($data['tanggal_lap']);
             $htmlTable .='<tr>
             <td>'.$data['nama'].'</td>

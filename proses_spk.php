@@ -51,6 +51,37 @@
             </div>
 
             <div class="row">
+                <h3>Nilai Target Produk</h3>
+                <div class="table-responsive">
+                    <table id="example0" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nama </th>
+                                <?php foreach ($db->select('nama_kriteria','kriteria')->get() as $k): ?>
+                                <th>
+                                    <?php
+                                        $tmp = explode('_',$k['nama_kriteria']);
+                                        echo ucwords(implode(' ',$tmp));
+                                    ?>
+                                </th>
+                                <?php endforeach ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($db->select('DISTINCT produk.nama_produk, produk.id_produk', 'profile_produk,produk,kriteria')->where('profile_produk.id_produk=produk.id_produk AND profile_produk.id_kriteria=kriteria.id_kriteria')->get() as $data): ?>
+                            <tr>
+                                <td><?= $data['nama_produk'] ?></td>
+                                <?php foreach ($db->select('profile_produk.nilai_produk','profile_produk')->where("profile_produk.id_produk='$data[id_produk]'")->get() as $nilaiProduk ): ?>
+                                <td><?= $nilaiProduk['nilai_produk'] ?></td>
+                                <?php endforeach ?>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="col-md-12 text-center">
                     <button class="btn btn-lg" onclick="tpl()">Proses</button>
                 </div>
@@ -324,7 +355,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h3>Hasil Nilai Rank</h3>
+                    <h3>Hasil Nilai </h3>
                     <div class="table-responsive">
                         <table id="example99" class="table table-striped table-bordered table-hover">
                             <thead>

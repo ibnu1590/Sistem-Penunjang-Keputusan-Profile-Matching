@@ -2,7 +2,7 @@
 	class database extends PDO{
 		protected $dsn = 'mysql:host=localhost;dbname=db_spk_kredit';
 		protected $dsu = 'root';
-		protected $dsp = 'admin';
+		protected $dsp = '';
 		private $cmd = '';
 
 		function __construct(){

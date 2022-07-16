@@ -30,7 +30,7 @@
                               </div>
                               <label for="nama">Nama Produk</label>
                                   <select required class="form-control" name="id_produk">
-                                  <?php  foreach ($db->select('*','produk')->get() as $val): ?> 
+                                  <?php  foreach ($db->select('*','produk')->where("id_produk not in (select id_produk from profile_produk)")->get() as $val): ?> 
                                   <option value="<?= $val['id_produk']?>"><?= $val['nama_produk'] ?></option>
                                   <?php endforeach ?>
                                   </select>

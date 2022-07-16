@@ -31,8 +31,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <?php foreach ($db->select('kriteria','nama_kriteria')->get() as $kr ): ?>
+                                <th>Nama Produk</th>
+                                <?php foreach ($db->select('nama_kriteria','kriteria')->get() as $kr ): ?>
                                 <th>
                                     <?php
                                         $tmp = explode('_',$kr['nama_kriteria']);
@@ -44,16 +44,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no=1; foreach($db->select('kreditur.id_calon_kr,kreditur.nama,hasil_tpa.*','kreditur,hasil_tpa')->where('kreditur.id_calon_kr=hasil_tpa.id_calon_kr')->get() as $data): ?>
+                            <?php $no=1; foreach($db->select('DISTINCT produk.nama_produk, produk.id_produk', 'profile_produk,produk,kriteria')->where('profile_produk.id_produk=produk.id_produk AND profile_produk.id_kriteria=kriteria.id_kriteria')->get() as $data): ?>
                             <tr>
                                 <td><?= $no;?></td>
-                                <td><?= $data['nama']?></td>
-                                <?php foreach ($db->select('kriteria','kriteria')->get() as $k): ?>
-                                <td><?= $db->getnamesubkriteria($data[$k['kriteria']])?> (Nilai = <?= $db->getnilaisubkriteria($data[$k['kriteria']])?>)</td>
+                                <td><?= $data['nama_produk'] ?></td>
+                                <?php foreach ($db->select('profile_produk.nilai_produk','profile_produk')->where("profile_produk.id_produk='$data[id_produk]'")->get() as $nilaiProduk ): ?>
+                                <td><?= $nilaiProduk['nilai_produk'] ?></td>
                                 <?php endforeach ?>
                                 <td>
-                                    <a class="btn btn-warning" href="edit_tpa.php?id=<?php echo $data[0]?>">Edit</a>
-                                    <a class="btn btn-danger" onclick="return confirm('Yakin Hapus?')" href="delete_tpa.php?id=<?php echo $data[0]?>">Hapus</a>
+                                    <a class="btn btn-warning" href="edit_profile_produk.php?id=<?php echo $data[1]?>">Edit</a>
+                                    <a class="btn btn-danger" onclick="return confirm('Yakin Hapus?')" href="delete_profile_produk.php?id=<?php echo $data[1]?>">Hapus</a>
                                 </td>
                             </tr>
                             <?php $no++; endforeach; ?>

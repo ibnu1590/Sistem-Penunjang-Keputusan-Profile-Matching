@@ -141,26 +141,19 @@ $htmlTable =
         <tr>
             <th>Nama</th>
             <th>Kriteria</th>
-            <th>Sub Kriteria</th>
-            <th>Nilai Target</th>
             <th>Nilai Kreditur</th>
-            <th>Nilai GAP</th>
-            <th>Nilai Bobot</th>
-            <th>Tanggal Penilaian</th>
+            <th>Periode</th>
         </tr>
     </thead>
     <tbody>';
         $no=1; 
-        foreach($db->select('kreditur.nama,kriteria.nama_kriteria,profile_kreditur.nilai_kreditur ,profile_kreditur.periode','profile_kreditur,kreditur,kriteria')->where('tanggal_lap BETWEEN '."'"."$startdate"."'".' AND '."'"."$enddate"."'".'')->get() as $data):
-            $tanggalLaporan=date_create($data['tanggal_lap']);
+        foreach($db->select('kreditur.nama,kriteria.nama_kriteria,profile_kreditur.nilai_kreditur ,profile_kreditur.periode','profile_kreditur,kreditur,kriteria')->where('profile_kreditur.id_kriteria=kriteria.id_kriteria AND profile_kreditur.id_calon_kr=kreditur.id_calon_kr AND periode BETWEEN '."'"."$startdate"."'".' AND '."'"."$enddate"."'".'')->get() as $data):
+            $tanggalLaporan=date_create($data['periode']);
+            $tmp = explode('_',$data['nama_kriteria']);
             $htmlTable .='<tr>
             <td>'.$data['nama'].'</td>
-            <td>'.$data['kriteria'].'</td>
-            <td>'.$data['id_subkriteria'].'</td>
-            <td>3</td>
-            <td>'.$data['nilai_gap'].'</td>
-            <td>'.$data['nilai_gap'].'</td>
-            <td>'.$data['nilai_bobot'].'</td>
+            <td>'.ucwords(implode(' ',$tmp)).'</td>
+            <td>'.$data['nilai_kreditur'].'</td>
             <td>'.date_format($tanggalLaporan,"d-m-Y").'</td>
         </tr>';
         $no++; endforeach;
